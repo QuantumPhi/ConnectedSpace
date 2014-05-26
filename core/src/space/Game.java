@@ -61,7 +61,5 @@ public class Game extends ApplicationAdapter {
         batch.end();
     }
     
-    public static void addObject(Entity e) {
-        game.objects.add(e);
-    }
+    public static void addObject(Entity e) { game.objects.add(e); }
 }
