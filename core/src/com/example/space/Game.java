@@ -1,4 +1,4 @@
-package com.integrate.space;
+package com.example.space;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
