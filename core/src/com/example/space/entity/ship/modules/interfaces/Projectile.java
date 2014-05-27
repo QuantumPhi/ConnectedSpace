@@ -1,4 +1,4 @@
-package com.example.space.entity.ship.modules;
+package com.example.space.entity.ship.modules.interfaces;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.example.space.entity.Entity;

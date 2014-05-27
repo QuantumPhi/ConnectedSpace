@@ -1,17 +1,21 @@
 package com.example.space.entity.ship.modules;
 
-public class Shield {
-	protected int health;
-	
-	public Shield(int h) {
-		health = h;
-	}
-	
+import com.example.space.entity.ship.modules.interfaces.Projectile;
+import com.example.space.entity.ship.modules.interfaces.Shell;
+
+public class Shield extends Shell {
+    protected float recharge;
+    
+    public Shield(int health, float r) {
+        super(health);
+        recharge = r;
+    }
+    
 	public void resolveHit(Projectile p) {
 		
 	}
 	
-	public void render() {
+	public void renderFlare() {
 		
 	}
 }
