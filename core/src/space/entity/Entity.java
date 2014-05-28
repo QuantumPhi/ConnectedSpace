@@ -4,9 +4,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class Entity {
-	private SpriteBatch batch;
-	private Texture img;
-	private double x, y;
+	protected SpriteBatch batch;
+	protected Texture img;
+	protected double x, y;
 	
 	public Entity(Texture i) {
 		batch = new SpriteBatch();
