@@ -1,10 +1,10 @@
 package com.integrate.space.android;
 
+import space.Game;
 import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.example.space.Game;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override

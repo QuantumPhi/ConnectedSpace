@@ -1,9 +1,10 @@
-package com.example.space.entity.ship;
+package space.entity.ship;
+
+import space.entity.Entity;
+import space.entity.ship.modules.Frame;
+import space.entity.ship.modules.interfaces.Weapon;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.example.space.entity.Entity;
-import com.example.space.entity.ship.modules.Frame;
-import com.example.space.entity.ship.modules.interfaces.Weapon;
 
 public abstract class Ship extends Entity {
 	protected Frame frame;

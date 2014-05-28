@@ -1,5 +1,4 @@
-package com.example.space.entity.ship.modules.interfaces;
-
+package space.entity.ship.modules.interfaces;
 
 public abstract class Shell {
     protected int health;

@@ -1,7 +1,8 @@
-package com.example.space.entity.ship.modules.interfaces;
+package space.entity.ship.modules.interfaces;
+
+import space.entity.Entity;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.example.space.entity.Entity;
 
 public abstract class Projectile extends Entity {
 	protected int baseDamage;
