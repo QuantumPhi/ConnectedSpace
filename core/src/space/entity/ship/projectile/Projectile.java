@@ -11,4 +11,6 @@ public abstract class Projectile extends Entity {
 	    super(t);
 		damage = d;
 	}
+	
+	public int getDamage() { return damage; }
 }

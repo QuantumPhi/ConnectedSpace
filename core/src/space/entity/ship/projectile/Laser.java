@@ -9,6 +9,11 @@ public class Laser extends Projectile {
 
     @Override
     public void update(int delta) {
-         y += 20 * delta;       
+         sprite.translateY(20 * delta);       
+    }
+
+    @Override
+    public void render() {
+        sprite.draw(batch);
     }
 }
