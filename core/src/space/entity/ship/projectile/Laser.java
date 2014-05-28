@@ -1,5 +1,6 @@
 package space.entity.ship.projectile;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Laser extends Projectile {
@@ -8,8 +9,9 @@ public class Laser extends Projectile {
     }
 
     @Override
-    public void update(int delta) {
-         sprite.translateY(20 * delta);       
+    public void update() {
+        float delta = Gdx.graphics.getDeltaTime() * 1000;
+        sprite.translateY(20 * delta);       
     }
 
     @Override

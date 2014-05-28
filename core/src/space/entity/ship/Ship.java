@@ -4,11 +4,15 @@ import space.entity.Entity;
 import space.entity.ship.projectile.Projectile;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Ship extends Entity {
+    private Animation anim;
+    private float stateTime = 0f;
+    
 	protected int shields;
 	protected double regen;
 	protected double speed;
@@ -18,15 +22,18 @@ public class Ship extends Entity {
 	
 	protected Projectile projectile;
 	
-	public Ship(Texture t, int sh, double r, double s, Projectile p) {
-		super(t);
+	public Ship(Animation a, int sh, double r, double s, Projectile p) {
+		super(a.getKeyFrame(0f).getTexture());
 		shields = sh;
 		regen = r;
 		speed = s;
 		projectile = p;
 	}
 	
-	public void update(int delta) {
+	public void update() {
+	    float delta = Gdx.graphics.getDeltaTime() * 1000;
+	    stateTime += delta;
+	    sprite = new Sprite(anim.getKeyFrame(stateTime, true).getTexture());
 	    double dx = speed * delta * Gdx.input.getAccelerometerX();
 	    double dy = speed * delta * Gdx.input.getAccelerometerY();
 	    sprite.translateX((float) dx);
