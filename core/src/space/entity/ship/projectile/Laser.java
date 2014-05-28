@@ -10,7 +10,7 @@ public class Laser extends Projectile {
 
     @Override
     public void update() {
-        float delta = Gdx.graphics.getDeltaTime() * 1000;
+        int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
         sprite.translateY(20 * delta);       
     }
 

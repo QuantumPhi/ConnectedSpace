@@ -1,19 +1,21 @@
 package space;
 
+import java.util.List;
+
+import space.entity.ship.Ship;
+import space.entity.ship.projectile.Projectile;
+
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
+	public Ship player;
+	public List<Projectile> projectiles;
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		player = new Ship(new SpriteSheet());
 	}
 
 	@Override

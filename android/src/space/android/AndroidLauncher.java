@@ -1,4 +1,4 @@
-package com.integrate.space.android;
+package space.android;
 
 import space.Game;
 import android.os.Bundle;

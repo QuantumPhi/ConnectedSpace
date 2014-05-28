@@ -31,7 +31,7 @@ public class Ship extends Entity {
 	}
 	
 	public void update() {
-	    float delta = Gdx.graphics.getDeltaTime() * 1000;
+	    int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
 	    stateTime += delta;
 	    sprite = new Sprite(anim.getKeyFrame(stateTime, true).getTexture());
 	    double dx = speed * delta * Gdx.input.getAccelerometerX();
@@ -39,7 +39,7 @@ public class Ship extends Entity {
 	    sprite.translateX((float) dx);
 	    sprite.translateY((float) dy);
 	    if(isHit)
-	        flare = Math.min(flare + 0.5f, 1);
+	        flare = Math.min(flare + 0.5f, 0.75f);
 	    else
 	        flare = Math.max(flare - 0.006f, 0);
 	}
