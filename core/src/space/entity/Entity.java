@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public abstract class Entity {
 	private SpriteBatch batch;
 	private Texture img;
-	private float x, y;
+	private double x, y;
 	
 	public Entity(Texture i) {
 		batch = new SpriteBatch();
@@ -17,7 +17,7 @@ public abstract class Entity {
 	
 	public void render() {
 		batch.begin();
-		batch.draw(img, x, y);
+		batch.draw(img, (float)x, (float)y);
 		batch.end();
 	}
 }
