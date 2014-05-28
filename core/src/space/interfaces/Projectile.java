@@ -1,4 +1,4 @@
-package space.entity.ship.modules.interfaces;
+package space.interfaces;
 
 import space.entity.Entity;
 

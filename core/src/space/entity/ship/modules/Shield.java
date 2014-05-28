@@ -1,7 +1,7 @@
 package space.entity.ship.modules;
 
-import space.entity.ship.modules.interfaces.Projectile;
-import space.entity.ship.modules.interfaces.Shell;
+import space.interfaces.Projectile;
+import space.interfaces.Shell;
 
 public class Shield extends Shell {
     protected float recharge;

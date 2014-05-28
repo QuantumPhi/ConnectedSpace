@@ -1,8 +1,7 @@
-package space.entity.ship;
+package space.interfaces;
 
 import space.entity.Entity;
 import space.entity.ship.modules.Frame;
-import space.entity.ship.modules.interfaces.Weapon;
 
 import com.badlogic.gdx.graphics.Texture;
 
