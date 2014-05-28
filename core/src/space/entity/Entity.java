@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class Entity {
+    //private long id;
+    
 	protected SpriteBatch batch;
 	protected Sprite sprite;
 	
@@ -16,4 +18,10 @@ public abstract class Entity {
 	public abstract void update(int delta);
 	
 	public abstract void render();
+	
+	public float getX() { return sprite.getX(); }
+	public float getY() { return sprite.getY(); }
+	
+	public void setX(float x) { sprite.setX(x); }
+	public void setY(float y) { sprite.setY(y); }
 }
