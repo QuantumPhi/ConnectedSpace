@@ -10,7 +10,7 @@ public class SpriteSheet {
     private TextureRegion[] region;
     
     public SpriteSheet(String path, int width, int height) {
-        texture = new Texture(Gdx.files.internal("src/resources/ship_spritesheet.png"));
+        texture = new Texture(Gdx.files.internal(path));
         TextureRegion[][] regions = TextureRegion.split(texture, width, height);
         region = new TextureRegion[regions.length * regions[0].length];
         for(int i = 0; i < regions.length; i++)
