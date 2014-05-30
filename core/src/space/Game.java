@@ -11,14 +11,16 @@ import space.util.SpriteSheet;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 
 public class Game extends ApplicationAdapter {
 	public Ship player;
 	public List<Projectile> projectiles;
+	public Texture t;
 	
 	@Override
 	public void create () {
-		player = new Ship(new SpriteSheet("", 32, 32).getAnim(0.166f), 100, 0.5, 0.5, new Laser());
+		player = new Ship(new SpriteSheet("ship_spritesheet.png", 32, 32).getAnim(0.166f), 100, 0.5, 0.5, new Laser());
 		projectiles = new ArrayList<>();
 	}
 	
