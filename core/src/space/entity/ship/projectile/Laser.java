@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Laser extends Projectile {
     public Laser() {
-        super(new Texture(""), 5);
+        super(new Texture("laser.png"), 5);
     }
 
     @Override
