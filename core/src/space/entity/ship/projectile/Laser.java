@@ -2,6 +2,7 @@ package space.entity.ship.projectile;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Laser extends Projectile {
     public Laser() {
@@ -15,7 +16,7 @@ public class Laser extends Projectile {
     }
 
     @Override
-    public void render() {
+    public void render(SpriteBatch batch) {
         sprite.draw(batch);
     }
 }

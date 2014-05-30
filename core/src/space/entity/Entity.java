@@ -8,18 +8,16 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public abstract class Entity {
     //private long id;
     
-	protected SpriteBatch batch;
 	protected Sprite sprite;
 	protected Animation anim;
 	
 	public Entity(Texture img) {
-		batch = new SpriteBatch();
 		sprite = new Sprite(img);
 	}
 	
 	public abstract void update();
 	
-	public abstract void render();
+	public abstract void render(SpriteBatch batch);
 	
 	public float getX() { return sprite.getX(); }
 	public float getY() { return sprite.getY(); }
