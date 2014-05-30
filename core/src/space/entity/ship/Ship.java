@@ -6,7 +6,6 @@ import space.entity.ship.projectile.Projectile;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
@@ -51,11 +50,13 @@ public class Ship extends Entity {
 	    isHit = true;
 	}
 	
-	public void render(SpriteBatch batch) {
+	public void render() {
+	    batch.begin();
 	    if(isHit)
 	        renderShieldFlare();
 	    sprite.draw(batch);
 	    isHit = false;
+	    batch.end();
 	}
 	
 	protected void renderShieldFlare() {
