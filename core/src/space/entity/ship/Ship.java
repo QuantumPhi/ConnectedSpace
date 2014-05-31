@@ -34,7 +34,7 @@ public class Ship extends Entity {
 	public void update() {
 	    int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
 	    stateTime += delta;
-	    sprite = new Sprite(anim.getKeyFrame(stateTime, true).getTexture());
+	    sprite = new Sprite(anim.getKeyFrame(stateTime, true));
 	    //double dx = speed * delta * Gdx.input.getPitch();
 	    //double dy = speed * delta * Gdx.input.getRoll();
 	    //sprite.translateX((float) dx);
