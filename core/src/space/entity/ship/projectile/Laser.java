@@ -20,4 +20,8 @@ public class Laser extends Projectile {
         sprite.draw(batch);
         batch.end();
     }
+    
+    public Projectile init() {
+        return new Laser();
+    }
 }

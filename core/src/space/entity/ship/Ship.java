@@ -12,9 +12,10 @@ public class Ship extends Entity {
     private Animation anim;
     private float stateTime = 0f;
     
+    private double calX, calY;
+    
 	protected int shields;
-	protected double regen;
-	protected double speed;
+	protected double regen, speed;
 	
 	protected boolean isHit = false;
 	protected float flare;
@@ -30,14 +31,17 @@ public class Ship extends Entity {
 		projectile = p;
 		
 		sprite.setSize(sprite.getWidth() * 4, sprite.getHeight() * 12);
+		sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
+		
+		calibrate();
 	}
 	
 	public void update() {
 	    int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
 	    stateTime += delta;
 	    sprite.setRegion(anim.getKeyFrame(stateTime, true));
-	    double dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll() - 90));
-	    double dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()));
+	    double dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll() - 90) - calX);
+	    double dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()) - calY);
 	    sprite.translate((float) dx, (float) dy);
 	    if(isHit)
 	        flare = Math.min(flare + 0.5f, 0.75f);
@@ -48,6 +52,10 @@ public class Ship extends Entity {
 	public void resolveHit(Projectile p) {
 	    shields = Math.max(shields - p.getDamage(), 0);
 	    isHit = true;
+	}
+	
+	public void fire() {
+	    
 	}
 	
 	public void render() {
@@ -63,7 +71,12 @@ public class Ship extends Entity {
 	    ShapeRenderer shape = new ShapeRenderer();
 	    shape.begin(ShapeType.Filled);
 	    shape.setColor(1, 1, 1, flare);
-	    shape.circle(sprite.getOriginX(), sprite.getOriginY(), sprite.getHeight() / 2);
+	    shape.circle(sprite.getX(), sprite.getY(), sprite.getHeight() / 2);
 	    shape.end();
+	}
+	
+	private void calibrate() {
+	    calX = Math.toRadians(Gdx.input.getRoll() - 90);
+	    calY = Math.toRadians(Gdx.input.getPitch());
 	}
 }
