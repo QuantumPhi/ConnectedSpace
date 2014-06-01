@@ -22,6 +22,9 @@ public class Game extends ApplicationAdapter {
 		player = new Ship(new SpriteSheet("ship_spritesheet.png", 32, 32).getAnim(0.166f), 100, 0.5, 1.25, new Laser());
 		projectiles = new ArrayList<>();
 		stars = new ArrayList<>();
+		
+		for(int i = 0; i < 100; i++)
+		    stars.add(new Star(Math.random(), Math.random()));
 	}
 	
 	public void update() {
@@ -37,10 +40,11 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
-		player.render();
-		for(Projectile p : projectiles)
-		    p.render();
 		for(Star s : stars)
-		    s.render();
+            s.renderPos(player.getX(), player.getY());
+		for(Projectile p : projectiles)
+            p.render();
+		player.render();
+		
 	}
 }
