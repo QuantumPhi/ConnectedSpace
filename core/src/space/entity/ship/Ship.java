@@ -5,7 +5,6 @@ import space.entity.ship.projectile.Projectile;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
@@ -29,16 +28,17 @@ public class Ship extends Entity {
 		regen = r;
 		speed = s;
 		projectile = p;
+		
+		sprite.setSize(sprite.getWidth() * 3, sprite.getHeight() * 9);
 	}
 	
 	public void update() {
 	    int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
 	    stateTime += delta;
-	    sprite = new Sprite(anim.getKeyFrame(stateTime, true));
-	    //double dx = speed * delta * Gdx.input.getPitch();
-	    //double dy = speed * delta * Gdx.input.getRoll();
-	    //sprite.translateX((float) dx);
-	    //sprite.translateY((float) dy);
+	    sprite.setRegion(anim.getKeyFrame(stateTime, true));
+	    double dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll() - 90));
+	    double dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()));
+	    sprite.translate((float) dx, (float) dy);
 	    if(isHit)
 	        flare = Math.min(flare + 0.5f, 0.75f);
 	    else

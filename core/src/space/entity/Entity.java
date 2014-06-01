@@ -15,7 +15,7 @@ public abstract class Entity {
 	
 	public Entity(Texture img) {
 	    batch = new SpriteBatch();
-		sprite = new Sprite(img);
+		sprite = img == null ? null : new Sprite(img);
 	}
 	
 	public abstract void update();

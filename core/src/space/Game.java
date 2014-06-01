@@ -19,8 +19,9 @@ public class Game extends ApplicationAdapter {
 	
 	@Override
 	public void create () {
-		player = new Ship(new SpriteSheet("ship_spritesheet.png", 32, 32).getAnim(0.166f), 100, 0.5, 0.5, new Laser());
+		player = new Ship(new SpriteSheet("ship_spritesheet.png", 32, 32).getAnim(0.166f), 100, 0.5, 1, new Laser());
 		projectiles = new ArrayList<>();
+		stars = new ArrayList<>();
 	}
 	
 	public void update() {
@@ -39,5 +40,7 @@ public class Game extends ApplicationAdapter {
 		player.render();
 		for(Projectile p : projectiles)
 		    p.render();
+		for(Star s : stars)
+		    s.render();
 	}
 }
