@@ -29,7 +29,7 @@ public class Ship extends Entity {
 		projectile = p;
 		
 		sprite.setSize(sprite.getWidth() * 4, sprite.getHeight() * 12);
-		sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
+		sprite.setOrigin(sprite.getWidth() / 2-1, sprite.getHeight() / 2);
 	}
 	
 	public void update() {
@@ -38,7 +38,9 @@ public class Ship extends Entity {
 	    sprite.setRegion(anim.getKeyFrame(stateTime, true));
 	    double dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll() - 90));
 	    double dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()));
-	    sprite.translate((float) dx, (float) dy);
+	    if(sprite.getX() + sprite.getOriginX() + dx >= 0 && sprite.getX() + sprite.getOriginX() + dx <= Gdx.graphics.getWidth() &&
+	            sprite.getY() + sprite.getOriginY() + dy >= 0 && sprite.getY() + sprite.getOriginY() + dy <= Gdx.graphics.getHeight())
+	        sprite.translate((float) dx, (float) dy);
 	    if(isHit)
 	        flare = Math.min(flare + 0.5f, 0.75f);
 	    else
