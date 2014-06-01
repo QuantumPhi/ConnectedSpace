@@ -29,7 +29,7 @@ public class Ship extends Entity {
 		speed = s;
 		projectile = p;
 		
-		sprite.setSize(sprite.getWidth() * 3, sprite.getHeight() * 9);
+		sprite.setSize(sprite.getWidth() * 4, sprite.getHeight() * 12);
 	}
 	
 	public void update() {

@@ -19,7 +19,7 @@ public class Game extends ApplicationAdapter {
 	
 	@Override
 	public void create () {
-		player = new Ship(new SpriteSheet("ship_spritesheet.png", 32, 32).getAnim(0.166f), 100, 0.5, 1, new Laser());
+		player = new Ship(new SpriteSheet("ship_spritesheet.png", 32, 32).getAnim(0.166f), 100, 0.5, 1.25, new Laser());
 		projectiles = new ArrayList<>();
 		stars = new ArrayList<>();
 	}
