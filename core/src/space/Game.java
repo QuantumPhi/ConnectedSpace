@@ -31,6 +31,8 @@ public class Game extends ApplicationAdapter {
 	    player.update();
 	    for(Projectile p : projectiles)
 	        p.update();
+	    for(Star s : stars)
+	        s.update();
 	}
 
 	@Override
@@ -41,7 +43,7 @@ public class Game extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		for(Star s : stars)
-            s.renderPos(player.getX(), player.getY());
+            s.render();
 		for(Projectile p : projectiles)
             p.render();
 		player.render();

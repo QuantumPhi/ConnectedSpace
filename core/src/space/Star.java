@@ -12,22 +12,29 @@ public class Star extends Entity {
     
     public Star(double px, double py) {
         super(new Texture("star.png"));
-        depth = (int)(5 + Math.random() * 5);
         
         sprite.setSize(sprite.getWidth() * 3, sprite.getHeight() * 3);
         
+        init(px, py);
+    }
+    
+    private void init(double px, double py) {
+        depth = (int)(5 + Math.random() * 5);
         sprite.setX((float) px * Gdx.graphics.getWidth());
         sprite.setY((float) py * Gdx.graphics.getHeight()); 
     }
 
     @Override
-    public void update() {     }
-    
-    public void renderPos(float cx, float cy) {
-        posX = sprite.getX() + Gdx.graphics.getWidth() * depth / 15.0f - Gdx.graphics.getWidth() * depth / 30.0f;
-        posY = sprite.getY() + Gdx.graphics.getHeight() * depth / 15.0f - Gdx.graphics.getHeight() * depth / 30.0f;
+    public void update() {
+        int delta = (int)(Gdx.graphics.getDeltaTime());
+        sprite.translate();
         
-        render();
+        if(sprite.getX() < 0 || sprite.getX() > Gdx.graphics.getWidth() ||
+                sprite.getY() < 0 || sprite.getY() > Gdx.graphics.getHeight())
+            init(Math.random(), 0);
+        
+        posX = 0;
+        posY = 0;
     }
     
     @Override
