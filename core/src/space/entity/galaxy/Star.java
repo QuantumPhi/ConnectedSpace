@@ -1,4 +1,4 @@
-package space;
+package space.entity.galaxy;
 
 import space.entity.Entity;
 

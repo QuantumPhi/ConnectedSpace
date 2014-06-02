@@ -3,6 +3,7 @@ package space;
 import java.util.ArrayList;
 import java.util.List;
 
+import space.entity.galaxy.Star;
 import space.entity.ship.Ship;
 import space.entity.ship.projectile.Laser;
 import space.entity.ship.projectile.Projectile;
