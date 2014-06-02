@@ -27,7 +27,7 @@ public class Star extends Entity {
     @Override
     public void update() {
         int delta = (int)(Gdx.graphics.getDeltaTime());
-        sprite.translate();
+        sprite.translateY(-1 * delta);
         
         if(sprite.getX() < 0 || sprite.getX() > Gdx.graphics.getWidth() ||
                 sprite.getY() < 0 || sprite.getY() > Gdx.graphics.getHeight())
