@@ -1,4 +1,4 @@
-package space;
+package space.entity.galaxy;
 
 import space.entity.Entity;
 
@@ -27,7 +27,7 @@ public class Star extends Entity {
     @Override
     public void update() {
         int delta = (int)(Gdx.graphics.getDeltaTime());
-        sprite.translate();
+        sprite.translateY(depth / 15.0f * delta);
         
         if(sprite.getX() < 0 || sprite.getX() > Gdx.graphics.getWidth() ||
                 sprite.getY() < 0 || sprite.getY() > Gdx.graphics.getHeight())
