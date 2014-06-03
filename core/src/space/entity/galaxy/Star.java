@@ -13,7 +13,7 @@ public class Star extends Entity {
     public Star(double px, double py) {
         super(new Texture("star.png"));
         
-        sprite.setSize(sprite.getWidth() * 3, sprite.getHeight() * 3);
+        sprite.setSize(sprite.getWidth() * 3 * Gdx.graphics.getWidth() / 1080f, sprite.getHeight() * 3 * Gdx.graphics.getHeight() / 1920f);
         
         init(px, py);
     }
@@ -27,11 +27,11 @@ public class Star extends Entity {
     @Override
     public void update() {
         int delta = (int)(Gdx.graphics.getDeltaTime());
-        sprite.translateY(depth / 15.0f * delta);
+        sprite.translateY(-(depth / 15.0f) * delta);
         
         if(sprite.getX() < 0 || sprite.getX() > Gdx.graphics.getWidth() ||
                 sprite.getY() < 0 || sprite.getY() > Gdx.graphics.getHeight())
-            init(Math.random(), 0);
+            init(Math.random(), 1);
         
         posX = 0;
         posY = 0;

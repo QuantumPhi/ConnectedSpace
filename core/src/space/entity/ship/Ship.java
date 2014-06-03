@@ -28,7 +28,7 @@ public class Ship extends Entity {
 		speed = s;
 		projectile = p;
 		
-		sprite.setSize(sprite.getWidth() * 4, sprite.getHeight() * 12);
+		sprite.setSize(sprite.getWidth() * 4 * Gdx.graphics.getWidth() / 1080f, sprite.getHeight() * 12 * Gdx.graphics.getHeight() / 1920f);
 		sprite.setOrigin(sprite.getWidth() / 2-1, sprite.getHeight() / 2);
 	}
 	
