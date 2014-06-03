@@ -5,14 +5,14 @@ import space.entity.Entity;
 import com.badlogic.gdx.graphics.Texture;
 
 public abstract class Projectile extends Entity {
-	protected int damage;
-	
-	public Projectile(Texture t, int d) {
-	    super(t);
-		damage = d;
-	}
-	
-	public int getDamage() { return damage; }
-	
-	public abstract Projectile init();
+    protected int damage;
+    
+    public Projectile(Texture t, int d) {
+        super(t);
+        damage = d;
+    }
+    
+    public int getDamage() { return damage; }
+    
+    public abstract Projectile init();
 }
