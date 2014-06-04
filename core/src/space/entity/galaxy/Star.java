@@ -20,6 +20,7 @@ public class Star extends Entity {
     
     private void init(double px, double py) {
         depth = (int)(5 + Math.random() * 5);
+        
         sprite.setX((float) px * Gdx.graphics.getWidth());
         sprite.setY((float) py * Gdx.graphics.getHeight()); 
     }
