@@ -10,21 +10,21 @@ public abstract class Entity {
     
     protected SpriteBatch batch;
     
-	protected Sprite sprite;
-	protected Animation anim;
-	
-	public Entity(Texture img) {
-	    batch = new SpriteBatch();
-		sprite = img == null ? null : new Sprite(img);
-	}
-	
-	public abstract void update();
-	
-	public abstract void render();
-	
-	public float getX() { return sprite.getX(); }
-	public float getY() { return sprite.getY(); }
-	
-	public void setX(float x) { sprite.setX(x); }
-	public void setY(float y) { sprite.setY(y); }
+    protected Sprite sprite;
+    protected Animation anim;
+    
+    public Entity(Texture img) {
+        batch = new SpriteBatch();
+        sprite = img == null ? null : new Sprite(img);
+    }
+    
+    public abstract void update();
+    
+    public abstract void render();
+    
+    public float getX() { return sprite.getX(); }
+    public float getY() { return sprite.getY(); }
+    
+    public void setX(float x) { sprite.setX(x); }
+    public void setY(float y) { sprite.setY(y); }
 }
