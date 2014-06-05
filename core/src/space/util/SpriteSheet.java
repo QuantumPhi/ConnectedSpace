@@ -12,6 +12,7 @@ public class SpriteSheet {
         texture = new Texture(path);
         TextureRegion[][] regions = TextureRegion.split(texture, width, height);
         region = new TextureRegion[regions.length * regions[0].length];
+        
         for(int i = 0; i < regions.length; i++)
             System.arraycopy(regions[i], 0, region, i * regions[i].length, regions[i].length);
     }
