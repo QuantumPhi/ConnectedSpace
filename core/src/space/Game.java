@@ -12,25 +12,32 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
-public class Game extends ApplicationAdapter {  
+public class Game extends ApplicationAdapter {
+    
     public Ship player;
     public List<Projectile> projectiles;
     public List<Star> stars;
     
     @Override
     public void create() {
-        player = new Ship(new SpriteSheet("ship_spritesheet.png", 32, 32).getAnim(0.166f), 100, 0.5, 1.25);
         projectiles = new ArrayList<>();
+        player = new Ship(new SpriteSheet("ship_spritesheet.png",32,32).getAnim(0.166f),100,0.5,1.25,projectiles);
         stars = new ArrayList<>();
         
         for(int i = 0; i < 200; i++)
-            stars.add(new Star(Math.random(), Math.random()));
+            stars.add(new Star(Math.random(),Math.random()));
     }
     
     public void update() {
         player.update();
-        for(Projectile p : projectiles)
-            p.update();
+        for(int i=0;i<projectiles.size();i++) {
+            if (projectiles.get(i).getY() > 0) {
+                projectiles.get(i).update();
+            } else {
+                projectiles.remove(i);
+                i--;
+            }
+        }
         for(Star s : stars)
             s.update();
     }
