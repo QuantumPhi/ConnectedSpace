@@ -1,10 +1,14 @@
 package space.entity.ship;
 
+import java.util.List;
+
 import space.entity.Entity;
 import space.entity.ship.projectile.Laser;
 import space.entity.ship.projectile.Projectile;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.Input.Peripheral;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -19,10 +23,13 @@ public class Ship extends Entity {
     protected boolean isHit = false;
     protected float flare;
     
-    protected Projectile projectile = Laser.init();
+    private int laserTimer = 0;
+    private int RELOAD_TIME = 1000;
+    public List<Projectile> projectiles;
     
-    public Ship(Animation a, int sh, double r, double s) {
+    public Ship(Animation a, int sh, double r, double s, List<Projectile> p) {
         super(a.getKeyFrame(0f).getTexture());
+        projectiles = p;
         anim = a;
         shields = sh;
         regen = r;
@@ -32,16 +39,39 @@ public class Ship extends Entity {
         sprite.setOrigin(sprite.getWidth() / 2-1, sprite.getHeight() / 2);
     }
     
+    @Override
     public void update() {
         int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
         stateTime += delta;
         sprite.setRegion(anim.getKeyFrame(stateTime, true));
-        double dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll() - 90));
-        double dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()));
+        
+        laserTimer+=delta;
+        if (laserTimer>RELOAD_TIME) {
+            projectiles.add(Laser.init());
+        }
+        
+        double dx = 0;
+        double dy = 0;
+        
+        if (Gdx.input.isPeripheralAvailable(Peripheral.Compass)) {
+            dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll() - 90));
+            dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()));
+        } else {
+            if (Gdx.input.isKeyPressed(Keys.RIGHT))
+                dx += speed * delta;
+            if (Gdx.input.isKeyPressed(Keys.LEFT))
+                dx -= speed * delta;
+            if (Gdx.input.isKeyPressed(Keys.UP))
+                dy += speed * delta;
+            if (Gdx.input.isKeyPressed(Keys.DOWN))
+                dy -= speed * delta;
+        }
+        
         if(sprite.getX() + sprite.getOriginX() + dx >= 0 && sprite.getX() + sprite.getOriginX() + dx <= Gdx.graphics.getWidth())
             sprite.translateX((float) dx);
         if(sprite.getY() + sprite.getOriginY() + dy >= 0 && sprite.getY() + sprite.getOriginY() + dy <= Gdx.graphics.getHeight())
             sprite.translateY((float) dy);
+        
         if(isHit)
             flare = Math.min(flare + 0.5f, 0.75f);
         else
@@ -57,6 +87,7 @@ public class Ship extends Entity {
         
     }
     
+    @Override
     public void render() {
         batch.begin();
         if(isHit)
