@@ -12,7 +12,8 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
-public class Game extends ApplicationAdapter {  
+public class Game extends ApplicationAdapter {
+    
     public Ship player;
     public List<Projectile> projectiles;
     public List<Star> stars;
@@ -24,7 +25,7 @@ public class Game extends ApplicationAdapter {
         stars = new ArrayList<>();
         
         for(int i = 0; i < 200; i++)
-            stars.add(new Star(Math.random(), Math.random()));
+            stars.add(new Star(Math.random(),Math.random()));
     }
     
     public void update() {
