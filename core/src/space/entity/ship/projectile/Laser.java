@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Laser extends Projectile {
-    public Laser() {
+    private Laser() {
         super(new Texture("laser.png"), 5);
     }
 
@@ -21,7 +21,7 @@ public class Laser extends Projectile {
         batch.end();
     }
     
-    public Projectile init() {
+    public static Projectile init() {
         return new Laser();
     }
 }

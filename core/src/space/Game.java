@@ -5,7 +5,6 @@ import java.util.List;
 
 import space.entity.galaxy.Star;
 import space.entity.ship.Ship;
-import space.entity.ship.projectile.Laser;
 import space.entity.ship.projectile.Projectile;
 import space.util.SpriteSheet;
 
@@ -20,11 +19,11 @@ public class Game extends ApplicationAdapter {
     
     @Override
     public void create() {
-        player = new Ship(new SpriteSheet("ship_spritesheet.png", 32, 32).getAnim(0.166f), 100, 0.5, 1.25, new Laser());
+        player = new Ship(new SpriteSheet("ship_spritesheet.png", 32, 32).getAnim(0.166f), 100, 0.5, 1.25);
         projectiles = new ArrayList<>();
         stars = new ArrayList<>();
         
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 200; i++)
             stars.add(new Star(Math.random(), Math.random()));
     }
     

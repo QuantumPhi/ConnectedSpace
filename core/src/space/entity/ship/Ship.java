@@ -1,6 +1,7 @@
 package space.entity.ship;
 
 import space.entity.Entity;
+import space.entity.ship.projectile.Laser;
 import space.entity.ship.projectile.Projectile;
 
 import com.badlogic.gdx.Gdx;
@@ -18,15 +19,14 @@ public class Ship extends Entity {
     protected boolean isHit = false;
     protected float flare;
     
-    protected Projectile projectile;
+    protected Projectile projectile = Laser.init();
     
-    public Ship(Animation a, int sh, double r, double s, Projectile p) {
+    public Ship(Animation a, int sh, double r, double s) {
         super(a.getKeyFrame(0f).getTexture());
         anim = a;
         shields = sh;
         regen = r;
         speed = s;
-        projectile = p;
         
         sprite.setSize(sprite.getWidth() * 4 * Gdx.graphics.getWidth() / 1080f, sprite.getHeight() * 12 * Gdx.graphics.getHeight() / 1920f);
         sprite.setOrigin(sprite.getWidth() / 2-1, sprite.getHeight() / 2);

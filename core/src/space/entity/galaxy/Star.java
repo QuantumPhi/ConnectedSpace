@@ -13,7 +13,7 @@ public class Star extends Entity {
     public Star(double px, double py) {
         super(new Texture("star.png"));
         
-        sprite.setSize(sprite.getWidth() * 3 * Gdx.graphics.getWidth() / 1080f, sprite.getHeight() * 3 * Gdx.graphics.getHeight() / 1920f);
+        sprite.setSize(sprite.getWidth() * 2 * Gdx.graphics.getWidth() / 1080f, sprite.getHeight() * 2 * Gdx.graphics.getHeight() / 1920f);
         
         init(px, py);
     }
