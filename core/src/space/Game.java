@@ -16,15 +16,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Game extends ApplicationAdapter {
     
     public Ship player;
-    public static List<Projectile> projectiles;
-    public static List<Star> stars;
+    public List<Projectile> projectiles;
+    public List<Star> stars;
     public SpriteBatch batch;
     
     @Override
     public void create() {
         batch = new SpriteBatch();
         projectiles = new ArrayList<>();
-        player = new Ship(new SpriteSheet("ship_spritesheet2.png",32,32).getAnim(0.166f),100,0.5,0.75);
+        player = new Ship(new SpriteSheet("ship_spritesheet2.png",32,32).getAnim(0.166f),100,0.5,0.75,projectiles);
         stars = new ArrayList<>();
         
         for(int i = 0; i < 20; i++)
@@ -34,7 +34,7 @@ public class Game extends ApplicationAdapter {
     public void update() {
         player.update();
         for(int i=0;i<projectiles.size();i++) {
-            if (projectiles.get(i).y > 0) {
+            if (projectiles.get(i).y < 1) {
                 projectiles.get(i).update();
             } else {
                 projectiles.remove(i);
@@ -56,9 +56,9 @@ public class Game extends ApplicationAdapter {
         
         for(Star s : stars)
             s.render(batch);
-        player.render(batch);
         for(Projectile p : projectiles)
             p.render(batch);
+        player.render(batch);
         
         batch.end();
     }
