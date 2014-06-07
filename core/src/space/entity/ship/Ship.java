@@ -1,17 +1,18 @@
 package space.entity.ship;
 
-import java.util.List;
-
+import space.Game;
 import space.entity.Entity;
 import space.entity.ship.projectile.Laser;
 import space.entity.ship.projectile.Projectile;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class Ship extends Entity {
+    
     private Animation anim;
     private float stateTime = 0f;
     
@@ -23,11 +24,9 @@ public class Ship extends Entity {
     
     private int laserTimer = 0;
     private int RELOAD_TIME = 1000;
-    public List<Projectile> projectiles;
     
-    public Ship(Animation a, int sh, double r, double s, List<Projectile> p) {
+    public Ship(Animation a, int sh, double r, double s) {
         super(a.getKeyFrame(0f).getTexture());
-        projectiles = p;
         anim = a;
         shields = sh;
         regen = r;
@@ -45,7 +44,7 @@ public class Ship extends Entity {
         
         laserTimer+=delta;
         if (laserTimer>RELOAD_TIME) {
-            projectiles.add(Laser.init());
+            Game.projectiles.add(new Laser());
         }
         
         double dx = 0;
@@ -59,6 +58,9 @@ public class Ship extends Entity {
         if(sprite.getY() + sprite.getOriginY() + dy >= 0 && sprite.getY() + sprite.getOriginY() + dy <= Gdx.graphics.getHeight())
             sprite.translateY((float) dy);
         
+        x += dx;
+        y += dy;
+        
         if(isHit)
             flare = Math.min(flare + 0.5f, 0.75f);
         else
@@ -70,18 +72,12 @@ public class Ship extends Entity {
         isHit = true;
     }
     
-    public void fire() {
-        
-    }
-    
     @Override
-    public void render() {
-        batch.begin();
+    public void render(SpriteBatch batch) {
         if(isHit)
             renderShieldFlare();
         sprite.draw(batch);
         isHit = false;
-        batch.end();
     }
     
     protected void renderShieldFlare() {

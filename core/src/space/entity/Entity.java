@@ -1,30 +1,28 @@
 package space.entity;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public abstract class Entity {
-    //private long id;
     
-    protected SpriteBatch batch;
-    
+    public double x;
+    public double y;
+        
     protected Sprite sprite;
-    protected Animation anim;
     
     public Entity(Texture img) {
-        batch = new SpriteBatch();
         sprite = img == null ? null : new Sprite(img);
     }
     
     public abstract void update();
     
-    public abstract void render();
+    public void render(SpriteBatch batch) {
+        sprite.setX((float)getScreenX());
+        sprite.setY((float)getScreenY()); 
+    }
     
-    public float getX() { return sprite.getX(); }
-    public float getY() { return sprite.getY(); }
-    
-    public void setX(float x) { sprite.setX(x); }
-    public void setY(float y) { sprite.setY(y); }
+    public double getScreenX() { return x*Gdx.graphics.getWidth(); }
+    public double getScreenY() { return y*Gdx.graphics.getHeight(); }
 }
