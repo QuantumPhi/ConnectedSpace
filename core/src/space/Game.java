@@ -33,7 +33,7 @@ public class Game extends ApplicationAdapter {
     
     public void update() {
         player.update();
-        for(int i=0;i<projectiles.size();i++) {
+        for(int i = 0; i < projectiles.size(); i++) {
             if (projectiles.get(i).y < 1) {
                 projectiles.get(i).update();
             } else {
@@ -41,8 +41,14 @@ public class Game extends ApplicationAdapter {
                 i--;
             }
         }
-        for(Star s : stars)
-            s.update();
+        for(int i = 0; i < stars.size(); i++) {
+            if(stars.get(i).y >= 0)
+                stars.get(i).update();
+            else {
+                stars.remove(i);
+                i--;
+            }
+        }
     }
 
     @Override
