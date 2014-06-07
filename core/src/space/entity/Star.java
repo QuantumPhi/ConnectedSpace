@@ -1,6 +1,4 @@
-package space.entity.galaxy;
-
-import space.entity.Entity;
+package space.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -17,12 +15,13 @@ public class Star extends Entity {
                        sprite.getHeight() * 2 * Gdx.graphics.getHeight() / 1920f);
         
         init();
+        y = Math.random()*2;
     }
     
     private void init() {
         x = Math.random();
         y = 1;
-        depth = (int)(1+Math.random()*5);
+        depth = (int)(4+Math.random()*5);
         sprite.setX((float)getScreenX());
     }
 
@@ -30,7 +29,7 @@ public class Star extends Entity {
     public void update() {
         int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
         
-        y -= delta*depth/5000.0f;
+        y -= delta*depth/16000.0;
         
         if(y < 0)
             init();

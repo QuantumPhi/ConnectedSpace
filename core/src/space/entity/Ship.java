@@ -1,9 +1,6 @@
-package space.entity.ship;
+package space.entity;
 
 import space.Game;
-import space.entity.Entity;
-import space.entity.ship.projectile.Laser;
-import space.entity.ship.projectile.Projectile;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;

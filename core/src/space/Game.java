@@ -3,9 +3,9 @@ package space;
 import java.util.ArrayList;
 import java.util.List;
 
-import space.entity.galaxy.Star;
-import space.entity.ship.Ship;
-import space.entity.ship.projectile.Projectile;
+import space.entity.Projectile;
+import space.entity.Ship;
+import space.entity.Star;
 import space.util.SpriteSheet;
 
 import com.badlogic.gdx.ApplicationAdapter;

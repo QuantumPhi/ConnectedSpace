@@ -1,6 +1,4 @@
-package space.entity.ship.projectile;
-
-import space.entity.Entity;
+package space.entity;
 
 import com.badlogic.gdx.graphics.Texture;
 
