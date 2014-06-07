@@ -18,10 +18,7 @@ public abstract class Entity {
     
     public abstract void update();
     
-    public void render(SpriteBatch batch) {
-        sprite.setX((float)getScreenX());
-        sprite.setY((float)getScreenY()); 
-    }
+    public abstract void render(SpriteBatch batch);
     
     public double getScreenX() { return x*Gdx.graphics.getWidth(); }
     public double getScreenY() { return y*Gdx.graphics.getHeight(); }
