@@ -21,10 +21,10 @@ public class Game extends ApplicationAdapter {
     @Override
     public void create() {
         projectiles = new ArrayList<>();
-        player = new Ship(new SpriteSheet("ship_spritesheet.png",32,32).getAnim(0.166f),100,0.5,1.25,projectiles);
+        player = new Ship(new SpriteSheet("ship_spritesheet2.png",32,32).getAnim(0.166f),100,0.5,1.25,projectiles);
         stars = new ArrayList<>();
         
-        for(int i = 0; i < 200; i++)
+        for(int i = 0; i < 20; i++)
             stars.add(new Star(Math.random(),Math.random()));
     }
     

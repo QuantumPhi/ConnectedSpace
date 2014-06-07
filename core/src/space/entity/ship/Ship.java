@@ -7,8 +7,6 @@ import space.entity.ship.projectile.Laser;
 import space.entity.ship.projectile.Projectile;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.Input.Peripheral;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -53,19 +51,8 @@ public class Ship extends Entity {
         double dx = 0;
         double dy = 0;
         
-        if (Gdx.input.isPeripheralAvailable(Peripheral.Compass)) {
-            dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll() - 90));
-            dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()));
-        } else {
-            if (Gdx.input.isKeyPressed(Keys.RIGHT))
-                dx += speed * delta;
-            if (Gdx.input.isKeyPressed(Keys.LEFT))
-                dx -= speed * delta;
-            if (Gdx.input.isKeyPressed(Keys.UP))
-                dy += speed * delta;
-            if (Gdx.input.isKeyPressed(Keys.DOWN))
-                dy -= speed * delta;
-        }
+        dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll() - 90));
+        dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()));
         
         if(sprite.getX() + sprite.getOriginX() + dx >= 0 && sprite.getX() + sprite.getOriginX() + dx <= Gdx.graphics.getWidth())
             sprite.translateX((float) dx);
