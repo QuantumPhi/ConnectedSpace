@@ -10,4 +10,4 @@ Contributors:
 | Tarik | Programming |
 | Shreyas | Programming |
 
-[LICENSE](LICENSE.md)
+Licensed under the [MIT License](LICENSE.md).
