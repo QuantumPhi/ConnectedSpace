@@ -4,9 +4,12 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
-public class SpriteSheet {
+public class SpriteSheet {    
     private Texture texture;
     private TextureRegion[] region;
+    
+    public static SpriteSheet SHIP_VARIANT_1 = new SpriteSheet("ship_spritesheet1.png",32,32);
+    public static SpriteSheet SHIP_VARIANT_2 = new SpriteSheet("ship_spritesheet2.png",32,32);
     
     public SpriteSheet(String path, int width, int height) {
         texture = new Texture(path);

@@ -6,7 +6,6 @@ import java.util.List;
 import space.entity.Projectile;
 import space.entity.Ship;
 import space.entity.Star;
-import space.util.SpriteSheet;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -14,17 +13,16 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
-    
+    public SpriteBatch batch;
     public Ship player;
     public List<Projectile> projectiles;
     public List<Star> stars;
-    public SpriteBatch batch;
     
     @Override
     public void create() {
         batch = new SpriteBatch();
-        projectiles = new ArrayList<>();
-        player = new Ship(new SpriteSheet("ship_spritesheet2.png",32,32).getAnim(0.166f),100,0.5,0.75,projectiles);
+        player = Ship.SHIP_VARIANT_1;
+        projectiles = player.projectiles;
         stars = new ArrayList<>();
         
         for(int i = 0; i < 20; i++)
@@ -41,14 +39,8 @@ public class Game extends ApplicationAdapter {
                 i--;
             }
         }
-        for(int i = 0; i < stars.size(); i++) {
-            if(stars.get(i).y >= 0)
-                stars.get(i).update();
-            else {
-                stars.remove(i);
-                i--;
-            }
-        }
+        for(int i = 0; i < stars.size(); i++)
+            stars.get(i).update();
     }
 
     @Override

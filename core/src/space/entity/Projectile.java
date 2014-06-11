@@ -2,17 +2,16 @@ package space.entity;
 
 import com.badlogic.gdx.graphics.Texture;
 
-public abstract class Projectile extends Entity {
-    
+public abstract class Projectile extends Entity {  
+    public double speed;
     public int damage;
-    public int speed;
     
-    public Projectile(Texture t, double nx, double ny, int d, int s) {
+    public Projectile(Texture t, double nx, double ny, double s, int d) {
         super(t);
         x = nx;
         y = ny;
-        damage = d;
         speed = s;
+        damage = d;
         sprite.setX((float)getScreenX());
     }
 }
