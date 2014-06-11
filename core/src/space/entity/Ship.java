@@ -29,8 +29,8 @@ public class Ship extends Entity {
     
     public List<Projectile> projectiles;
     
-    public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),100,0.5,0.75);
-    public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),100,0.5,0.75);
+    public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),100,0.5,1);
+    public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),100,0.5,1);
     
     private Ship(Animation a, int sh, double r, double s) {
         super(a.getKeyFrame(0f).getTexture());
@@ -57,7 +57,7 @@ public class Ship extends Entity {
         
         laserTimer += delta;
         if (laserTimer > RELOAD_TIME) {
-            projectiles.add(new Laser(x, y));
+            projectiles.add(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
             laserTimer = 0;
         }
         

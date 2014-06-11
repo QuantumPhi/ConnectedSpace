@@ -21,4 +21,6 @@ public abstract class Entity {
     
     public double getScreenX() { return x*Gdx.graphics.getWidth(); }
     public double getScreenY() { return y*Gdx.graphics.getHeight(); }
+    public double getCenterX() { return getScreenX()+sprite.getOriginX(); }
+    public double getCenterY() { return getScreenY()+sprite.getOriginY(); }
 }
