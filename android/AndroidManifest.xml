@@ -30,6 +30,10 @@
             android:name="space.android.MenuActivity"
             android:label="@string/title_activity_menu" >
         </activity>
+        <activity
+            android:name="space.android.FooActivity"
+            android:label="@string/title_activity_foo" >
+        </activity>
     </application>
 
 </manifest>
