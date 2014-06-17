@@ -23,7 +23,7 @@ public class Game extends ApplicationAdapter {
         batch = new SpriteBatch();
         player = Ship.SHIP_VARIANT_1;
         projectiles = player.projectiles;
-        stars = new ArrayList<>();
+        stars = new ArrayList<Star>();
         
         for(int i = 0; i < 20; i++)
             stars.add(new Star());
