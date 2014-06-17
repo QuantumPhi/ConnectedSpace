@@ -13,6 +13,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
+    public long id;
+    
     public SpriteBatch batch;
     public Ship player;
     public List<Projectile> projectiles;
