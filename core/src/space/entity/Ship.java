@@ -97,7 +97,8 @@ public class Ship extends Entity {
         ShapeRenderer shape = new ShapeRenderer();
         shape.begin(ShapeType.Filled);
         shape.setColor(1, 1, 1, flare);
-        shape.circle(sprite.getX(), sprite.getY(), sprite.getHeight() / 2);
+        shape.circle(sprite.getX() - sprite.getOriginX(), sprite.getY() - sprite.getOriginY(), 
+                (sprite.getHeight() > sprite.getWidth() ? sprite.getHeight() : sprite.getWidth()) / 2);
         shape.end();
     }
 }
