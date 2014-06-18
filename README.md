@@ -11,3 +11,5 @@ Contributors:
 | Shreyas | Programming |
 
 Licensed under the [MIT License](LICENSE).
+
+[Setup Instructions](SETUP.md)
