@@ -20,7 +20,7 @@ public class SpriteSheet {
             System.arraycopy(regions[i], 0, region, i * regions[i].length, regions[i].length);
     }
     
-    public Animation getAnim(float frame) {
-        return new Animation(frame, region);
+    public Animation getAnim(float frameSpeed) {
+        return new Animation(frameSpeed, region);
     }
 }

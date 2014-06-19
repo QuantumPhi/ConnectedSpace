@@ -43,7 +43,7 @@ public class Ship extends Entity {
         shipWidth = sprite.getWidth()*4/1080d;
         shipHeight = sprite.getHeight()*12/1920d;
 
-        projectiles = new ArrayList<Projectile>();
+        projectiles = new ArrayList<>();
 
         sprite.setSize((float)shipWidth*Gdx.graphics.getWidth(),(float)shipHeight*Gdx.graphics.getHeight());
         sprite.setOrigin(sprite.getWidth()/2-1, sprite.getHeight()/2);
@@ -53,6 +53,7 @@ public class Ship extends Entity {
     public void update() {
         int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
         stateTime += delta;
+        stateTime %= anim.animationDuration;
         sprite.setRegion(anim.getKeyFrame(stateTime,true));
 
         laserTimer += delta;
@@ -87,8 +88,7 @@ public class Ship extends Entity {
     public void render(SpriteBatch batch) {
         sprite.setX((float)getScreenX());
         sprite.setY((float)getScreenY());
-        if(isHit)
-            renderShieldFlare();
+        renderShieldFlare();
         sprite.draw(batch);
         isHit = false;
     }

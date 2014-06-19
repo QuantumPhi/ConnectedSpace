@@ -6,6 +6,7 @@ import java.util.List;
 import space.entity.Projectile;
 import space.entity.Ship;
 import space.entity.Star;
+import space.util.AppInit;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -22,10 +23,11 @@ public class Game extends ApplicationAdapter {
     
     @Override
     public void create() {
+        AppInit.assignID(this);
         batch = new SpriteBatch();
         player = Ship.SHIP_VARIANT_1;
         projectiles = player.projectiles;
-        stars = new ArrayList<Star>();
+        stars = new ArrayList<>();
         
         for(int i = 0; i < 20; i++)
             stars.add(new Star());
