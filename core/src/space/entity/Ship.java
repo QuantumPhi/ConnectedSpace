@@ -64,11 +64,8 @@ public class Ship extends Entity {
             laserTimer = 0;
         }
 
-        double dx = 0;
-        double dy = 0;
-
-        dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll()-90))/1080.0;
-        dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()))/1920.0;
+        double dx = stats.getSideSpeedModifier() * speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll()-90))/1080.0;
+        double dy = stats.getFrontSpeedModifier() * speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()))/1920.0;
 
         if(x + dx >= 0 && x + shipWidth + dx <= 1)
             x += dx;
