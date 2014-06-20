@@ -88,7 +88,7 @@ public class Ship extends Entity {
     public void render(SpriteBatch batch) {
         sprite.setX((float)getScreenX());
         sprite.setY((float)getScreenY());
-        renderShieldFlare();
+        //renderShieldFlare();
         sprite.draw(batch);
         isHit = false;
     }
