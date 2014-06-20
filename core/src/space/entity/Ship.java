@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import space.util.SpriteSheet;
+import space.util.ShipStats;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -21,8 +22,8 @@ public class Ship extends Entity {
     protected boolean isHit = false;
     protected float flare;
 
+    private ShipStats stats;
     private int laserTimer;
-    private final int RELOAD_TIME = 1000;
 
     private double shipWidth;
     private double shipHeight;
@@ -40,6 +41,7 @@ public class Ship extends Entity {
         regen = r;
         speed = s;
 
+        stats = new ShipStats();
         shipWidth = sprite.getWidth()*4/1080d;
         shipHeight = sprite.getHeight()*12/1920d;
 
@@ -51,13 +53,13 @@ public class Ship extends Entity {
 
     @Override
     public void update() {
-        int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
+    	int delta = (int)(Gdx.graphics.getDeltaTime() * 1000);
         stateTime += delta;
         stateTime %= anim.animationDuration;
         sprite.setRegion(anim.getKeyFrame(stateTime,true));
 
         laserTimer += delta;
-        if (laserTimer > RELOAD_TIME) {
+        if (laserTimer > stats.getReloadTime()) {
             projectiles.add(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
             laserTimer = 0;
         }
