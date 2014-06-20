@@ -11,9 +11,7 @@ Repository Setup
 ----------------
 * Clone [REPO](https://github.com/QuantumPhi/ConnectedSpace.git)
 * Create ```local.properties```
-* Add following code to ```local.properties```:
-    ```sdk.dir=<PATH-TO-ANDROID-SDK>```
-
+* Add following code to ```local.properties```: ```sdk.dir=<PATH-TO-ANDROID-SDK>```
 * Import ```ConnectedSpace``` as ```Gradle Project```
 
 Post-Import
