@@ -6,7 +6,6 @@ import java.util.List;
 import space.entity.Projectile;
 import space.entity.Ship;
 import space.entity.Star;
-import space.util.AppInit;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -14,7 +13,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
-    public long id;
+    public String id;
     
     public SpriteBatch batch;
     public Ship player;
@@ -23,7 +22,6 @@ public class Game extends ApplicationAdapter {
     
     @Override
     public void create() {
-        AppInit.assignID(this);
         batch = new SpriteBatch();
         player = Ship.SHIP_VARIANT_1;
         projectiles = player.projectiles;
