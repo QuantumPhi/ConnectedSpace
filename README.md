@@ -9,6 +9,7 @@ Contributors:
 |-------------|-----|
 | Tarik | Programming |
 | Shreyas | Programming |
+| Brennan | Art/Programming |
 
 Licensed under the [GNU GPL v3 License](LICENSE).
 
