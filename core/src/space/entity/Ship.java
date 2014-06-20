@@ -75,9 +75,7 @@ public class Ship extends Entity {
 
         laserTimer += delta;
         if (laserTimer > reloadTime) {
-            if(this == SHIP_VARIANT_2) {
-                projectiles.add(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
-            }
+            projectiles.add(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
             laserTimer = 0;
         }
 
