@@ -24,10 +24,10 @@ allprojects {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
-		
-		flatDir {
-			dirs "libs"
-		}
+        
+        flatDir {
+            dirs "libs"
+        }
     }
 }
 
@@ -48,9 +48,9 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
-		
-		compile "com.android.support:support-v4:+"
-		compile "com.android.support:appcompat-v7:+"
+        
+        compile "com.android.support:support-v4:+"
+        compile "com.android.support:appcompat-v7:+"
     }
 }
 

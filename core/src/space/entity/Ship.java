@@ -28,12 +28,12 @@ public class Ship extends Entity {
 
     public List<Projectile> projectiles;
 
-    public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),Stats.VAR_1);
-    public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),Stats.VAR_2);
+    public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),Stats.VARIANT_1);
+    public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),Stats.VARIANT_2);
     
     private enum Stats {
-        VAR_1(1000, 10, 0.5, 1),
-        VAR_2(1000, 10, 0.5, 1);
+        VARIANT_1(1000, 10, 0.5, 1),
+        VARIANT_2(1000, 10, 0.5, 1);
         
         public int reloadTime;
         public int shields;
