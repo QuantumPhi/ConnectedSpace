@@ -29,10 +29,14 @@ public class Ship extends Entity {
 
     public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),Stats.VARIANT_1);
     public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),Stats.VARIANT_2);
+    public static Ship SHIP_VARIANT_4 = new Ship(SpriteSheet.SHIP_VARIANT_4.getAnim(0.166f),Stats.VARIANT_4);
+    public static Ship SHIP_VARIANT_5 = new Ship(SpriteSheet.SHIP_VARIANT_5.getAnim(0.166f),Stats.VARIANT_5);
     
     private enum Stats {
         VARIANT_1(1000, 10, 0.5, 1),
-        VARIANT_2(1000, 10, 0.5, 1);
+        VARIANT_2(1000, 10, 0.5, 1),
+        VARIANT_4(1000, 10, 0.5, 1),
+        VARIANT_5(1000, 10, 0.5, 1);
         
         public int reloadTime;
         public int shields;
@@ -78,10 +82,20 @@ public class Ship extends Entity {
         double dx = stat.speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll()-90))/1080.0;
         double dy = stat.speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()))/1920.0;
 
+
         if(x + dx >= 0 && x + shipWidth + dx <= 1)
             x += dx;
+        else if (x + shipWidth + dx > 1)
+        	x =  1 - shipWidth;
+        else if (x + dx < 0)
+        	x = 0;
+        
         if(y + dy >= 0 && y + shipHeight + dy <= 1)
             y += dy;
+        else if (y + shipHeight + dy > 1)
+        	y = 1 - shipHeight;
+        else if (y + dy < 0)
+        	y = 0;
 
         if(isHit)
             flare = Math.min(flare + 0.5f, 0.75f);
