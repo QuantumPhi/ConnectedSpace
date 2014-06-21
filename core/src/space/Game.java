@@ -23,7 +23,7 @@ public class Game extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        player = Ship.SHIP_VARIANT_1;
+        player = Ship.SHIP_VARIANT_2;
         projectiles = player.projectiles;
         stars = new ArrayList<>();
         

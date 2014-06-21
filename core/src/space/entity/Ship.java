@@ -15,8 +15,7 @@ public class Ship extends Entity {
     private Animation anim;
     private float stateTime = 0f;
 
-    protected int shields, reloadTime;
-    protected double regen, speed;
+    Stats stat;
 
     protected boolean isHit = false;
     protected float flare;
@@ -52,10 +51,7 @@ public class Ship extends Entity {
         super(a.getKeyFrame(0f).getTexture());
         laserTimer = 0;
         anim = a;
-        shields = s.shields;
-        reloadTime = s.reloadTime;
-        regen = s.regen;
-        speed = s.speed;
+        stat = s;
 
         shipWidth = sprite.getWidth()*4/1080d;
         shipHeight = sprite.getHeight()*12/1920d;
@@ -74,13 +70,13 @@ public class Ship extends Entity {
         sprite.setRegion(anim.getKeyFrame(stateTime,true));
 
         laserTimer += delta;
-        if (laserTimer > reloadTime) {
+        if (laserTimer > stat.reloadTime) {
             projectiles.add(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
             laserTimer = 0;
         }
 
-        double dx = speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll()-90))/1080.0;
-        double dy = speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()))/1920.0;
+        double dx = stat.speed * delta * Math.cos(Math.toRadians(Gdx.input.getRoll()-90))/1080.0;
+        double dy = stat.speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()))/1920.0;
 
         if(x + dx >= 0 && x + shipWidth + dx <= 1)
             x += dx;
@@ -94,7 +90,7 @@ public class Ship extends Entity {
     }
 
     public void resolveHit(Projectile p) {
-        shields = Math.max(shields - p.damage, 0);
+        stat.shields = Math.max(stat.shields - p.damage, 0);
         isHit = true;
     }
 
