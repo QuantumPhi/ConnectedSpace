@@ -10,6 +10,7 @@ public class SpriteSheet {
     
     public static SpriteSheet SHIP_VARIANT_1 = new SpriteSheet("ship_spritesheet1.png",23,32);
     public static SpriteSheet SHIP_VARIANT_2 = new SpriteSheet("ship_spritesheet2.png",25,28);
+    public static SpriteSheet SHIP_VARIANT_4 = new SpriteSheet("ship_spritesheet4.png",25,29);
     
     public SpriteSheet(String path, int width, int height) {
         texture = new Texture(path);

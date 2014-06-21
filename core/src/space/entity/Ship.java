@@ -30,10 +30,12 @@ public class Ship extends Entity {
 
     public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),Stats.VARIANT_1);
     public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),Stats.VARIANT_2);
+    public static Ship SHIP_VARIANT_4 = new Ship(SpriteSheet.SHIP_VARIANT_4.getAnim(0.166f),Stats.VARIANT_4);
     
     private enum Stats {
         VARIANT_1(1000, 10, 0.5, 1),
-        VARIANT_2(1000, 10, 0.5, 1);
+        VARIANT_2(1000, 10, 0.5, 1),
+        VARIANT_4(1000, 10, 0.5, 1);
         
         public int reloadTime;
         public int shields;
