@@ -83,19 +83,15 @@ public class Ship extends Entity {
         double dy = stat.speed * delta * Math.sin(Math.toRadians(Gdx.input.getPitch()))/1920.0;
 
 
-        if(x + dx >= 0 && x + shipWidth + dx <= 1)
-            x += dx;
-        else if (x + shipWidth + dx > 1)
-        	x =  1 - shipWidth;
-        else if (x + dx < 0)
-        	x = 0;
+        if(dx < 0)
+            x = Math.max(x+dx, 0);
+        else
+            x = Math.min(x+shipWidth+dx, 1);
         
-        if(y + dy >= 0 && y + shipHeight + dy <= 1)
-            y += dy;
-        else if (y + shipHeight + dy > 1)
-        	y = 1 - shipHeight;
-        else if (y + dy < 0)
-        	y = 0;
+        if(dy < 0)
+            y = Math.max(y+dy, 0);
+        else
+            y = Math.min(y+shipHeight+dy, 1);
 
         if(isHit)
             flare = Math.min(flare + 0.5f, 0.75f);
