@@ -1,11 +1,9 @@
 package space;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
-import space.entity.Projectile;
+import space.entity.Entity;
 import space.entity.Ship;
-import space.entity.Star;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -16,33 +14,17 @@ public class Game extends ApplicationAdapter {
     public String id;
     
     public SpriteBatch batch;
-    public Ship player;
-    public List<Projectile> projectiles;
-    public List<Star> stars;
+    public HashMap<Integer, Entity> objects = new HashMap<>();
     
     @Override
     public void create() {
         batch = new SpriteBatch();
-        player = Ship.SHIP_VARIANT_1;
-        projectiles = player.projectiles;
-        stars = new ArrayList<>();
-        
-        for(int i = 0; i < 20; i++)
-            stars.add(new Star());
+        Entity player = Ship.SHIP_VARIANT_1;
     }
     
     public void update() {
-        player.update();
-        for(int i = 0; i < projectiles.size(); i++) {
-            if (projectiles.get(i).y < 1) {
-                projectiles.get(i).update();
-            } else {
-                projectiles.remove(i);
-                i--;
-            }
-        }
-        for(int i = 0; i < stars.size(); i++)
-            stars.get(i).update();
+        for(Entity e : objects.values())
+            e.update();
     }
 
     @Override
@@ -53,12 +35,6 @@ public class Game extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         
         batch.begin();
-        
-        for(Star s : stars)
-            s.render(batch);
-        for(Projectile p : projectiles)
-            p.render(batch);
-        player.render(batch);
         
         batch.end();
     }

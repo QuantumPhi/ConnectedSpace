@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-public class Ship extends Entity {
+public class Ship extends Entity {    
     private Animation anim;
     private float stateTime = 0f;
 
@@ -24,8 +24,6 @@ public class Ship extends Entity {
 
     private double shipWidth;
     private double shipHeight;
-
-    public List<Projectile> projectiles;
 
     public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),Stats.VARIANT_1);
     public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),Stats.VARIANT_2);
@@ -61,8 +59,6 @@ public class Ship extends Entity {
 
         shipWidth = sprite.getWidth()*4/1080d;
         shipHeight = sprite.getHeight()*12/1920d;
-
-        projectiles = new ArrayList<>();
 
         sprite.setSize((float)shipWidth*Gdx.graphics.getWidth(),(float)shipHeight*Gdx.graphics.getHeight());
         sprite.setOrigin(sprite.getWidth()/2-1, sprite.getHeight()/2);
@@ -122,5 +118,10 @@ public class Ship extends Entity {
         shape.circle(sprite.getX() - sprite.getOriginX(), sprite.getY() - sprite.getOriginY(), 
                 (sprite.getHeight() > sprite.getWidth() ? sprite.getHeight() : sprite.getWidth()) / 2);
         shape.end();
+    }
+    
+    @Override
+    public int hashCode() {
+        
     }
 }

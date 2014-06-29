@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public abstract class Entity {
     public double x;
     public double y;
+    public double z;
         
     protected Sprite sprite;
     
