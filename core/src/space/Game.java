@@ -3,6 +3,8 @@ package space;
 import java.util.ArrayList;
 import java.util.List;
 
+import space.entity.BackgroundEntity;
+import space.entity.Planet;
 import space.entity.Projectile;
 import space.entity.Ship;
 import space.entity.Star;
@@ -18,17 +20,18 @@ public class Game extends ApplicationAdapter {
     public SpriteBatch batch;
     public Ship player;
     public List<Projectile> projectiles;
-    public List<Star> stars;
+    public List<BackgroundEntity> background;
     
     @Override
     public void create() {
         batch = new SpriteBatch();
         player = Ship.SHIP_VARIANT_1;
         projectiles = player.projectiles;
-        stars = new ArrayList<>();
+        background = new ArrayList<>();
         
         for(int i = 0; i < 20; i++)
-            stars.add(new Star());
+           background.add(new Star());
+        background.add(new Planet());
     }
     
     public void update() {
@@ -41,8 +44,8 @@ public class Game extends ApplicationAdapter {
                 i--;
             }
         }
-        for(int i = 0; i < stars.size(); i++)
-            stars.get(i).update();
+        for(int i = 0; i < background.size(); i++)
+            background.get(i).update();
     }
 
     @Override
@@ -54,7 +57,7 @@ public class Game extends ApplicationAdapter {
         
         batch.begin();
         
-        for(Star s : stars)
+        for(BackgroundEntity s : background)
             s.render(batch);
         for(Projectile p : projectiles)
             p.render(batch);
