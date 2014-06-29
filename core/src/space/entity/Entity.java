@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public abstract class Entity {
+public abstract class Entity implements Comparable<Entity> {
     public double x;
     public double y;
     public double z;
@@ -24,4 +24,9 @@ public abstract class Entity {
     public double getScreenY() { return y*Gdx.graphics.getHeight(); }
     public double getCenterX() { return getScreenX()+sprite.getOriginX(); }
     public double getCenterY() { return getScreenY()+sprite.getOriginY(); }
+    
+    @Override
+    public int compareTo(Entity other) {
+        return new Double(z).compareTo(other.z);
+    }
 }

@@ -1,8 +1,6 @@
 package space.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import space.Game;
 import space.util.SpriteSheet;
 
 import com.badlogic.gdx.Gdx;
@@ -73,7 +71,7 @@ public class Ship extends Entity {
 
         laserTimer += delta;
         if (laserTimer > stat.reloadTime) {
-            projectiles.add(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
+            Game.addObject(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
             laserTimer = 0;
         }
 
@@ -118,10 +116,5 @@ public class Ship extends Entity {
         shape.circle(sprite.getX() - sprite.getOriginX(), sprite.getY() - sprite.getOriginY(), 
                 (sprite.getHeight() > sprite.getWidth() ? sprite.getHeight() : sprite.getWidth()) / 2);
         shape.end();
-    }
-    
-    @Override
-    public int hashCode() {
-        
     }
 }
