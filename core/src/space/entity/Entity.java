@@ -20,10 +20,10 @@ public abstract class Entity implements Comparable<Entity> {
     
     public abstract void render(SpriteBatch batch);
     
-    public double getScreenX() { return x*Gdx.graphics.getWidth(); }
-    public double getScreenY() { return y*Gdx.graphics.getHeight(); }
-    public double getCenterX() { return getScreenX()+sprite.getOriginX(); }
-    public double getCenterY() { return getScreenY()+sprite.getOriginY(); }
+    public final double getScreenX() { return x*Gdx.graphics.getWidth(); }
+    public final double getScreenY() { return y*Gdx.graphics.getHeight(); }
+    public final double getCenterX() { return getScreenX()+sprite.getOriginX(); }
+    public final double getCenterY() { return getScreenY()+sprite.getOriginY(); }
     
     @Override
     public int compareTo(Entity other) {
