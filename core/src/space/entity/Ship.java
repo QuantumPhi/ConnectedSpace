@@ -1,8 +1,6 @@
 package space.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import space.Game;
 import space.util.SpriteSheet;
 
 import com.badlogic.gdx.Gdx;
@@ -11,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-public class Ship extends Entity {
+public class Ship extends Entity {    
     private Animation anim;
     private float stateTime = 0f;
 
@@ -24,8 +22,6 @@ public class Ship extends Entity {
 
     private double shipWidth;
     private double shipHeight;
-
-    public List<Projectile> projectiles;
 
     public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),Stats.VARIANT_1);
     public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),Stats.VARIANT_2);
@@ -55,14 +51,14 @@ public class Ship extends Entity {
 
     private Ship(Animation a, Stats s) {
         super(a.getKeyFrame(0f).getTexture());
+        z = 1;
+        
         laserTimer = 0;
         anim = a;
         stat = s;
 
         shipWidth = sprite.getWidth()*4/1080d;
         shipHeight = sprite.getHeight()*12/1920d;
-
-        projectiles = new ArrayList<>();
 
         sprite.setSize((float)shipWidth*Gdx.graphics.getWidth(),(float)shipHeight*Gdx.graphics.getHeight());
         sprite.setOrigin(sprite.getWidth()/2-1, sprite.getHeight()/2);
@@ -77,7 +73,7 @@ public class Ship extends Entity {
 
         laserTimer += delta;
         if (laserTimer > stat.reloadTime) {
-            projectiles.add(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
+            Game.addObject(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
             laserTimer = 0;
         }
 
