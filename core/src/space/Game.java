@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import space.entity.Entity;
-import space.entity.Planet;
 import space.entity.Ship;
 import space.entity.Star;
 
@@ -26,12 +25,11 @@ public class Game extends ApplicationAdapter {
     public void create() {
         game = this;
         batch = new SpriteBatch();
-        objects = Collections.synchronizedList(new ArrayList<Entity>());
+        objects = new ArrayList<>();
         Entity player = Ship.SHIP_VARIANT_1;
         objects.add(player);
         for(int i = 0; i < 20; i++)
             objects.add(new Star());
-        objects.add(new Planet());
     }
     
     public void update() {
