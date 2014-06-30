@@ -51,6 +51,8 @@ public class Ship extends Entity {
 
     private Ship(Animation a, Stats s) {
         super(a.getKeyFrame(0f).getTexture());
+        z = 1;
+        
         laserTimer = 0;
         anim = a;
         stat = s;

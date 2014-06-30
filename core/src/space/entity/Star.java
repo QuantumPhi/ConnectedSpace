@@ -9,6 +9,7 @@ public class Star extends Entity {
     
     public Star() {
         super(new Texture("star.png"));
+        z = -1;
         
         sprite.setSize(sprite.getWidth()  * 2 * Gdx.graphics.getWidth()  / 1080f,
                        sprite.getHeight() * 2 * Gdx.graphics.getHeight() / 1920f);

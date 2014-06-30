@@ -1,8 +1,8 @@
 package space;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import space.entity.Entity;
 import space.entity.Ship;
@@ -14,17 +14,18 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
-    private static Game instance;
+    private static Game game;
     
     public String id;
     
     public SpriteBatch batch;
-    public List<Entity> objects = new CopyOnWriteArrayList<>();
+    public List<Entity> objects;
     
     @Override
     public void create() {
-        instance = this;
+        game = this;
         batch = new SpriteBatch();
+        objects = Collections.synchronizedList(new ArrayList<Entity>());
         Entity player = Ship.SHIP_VARIANT_1;
         objects.add(player);
         for(int i = 0; i < 20; i++)
@@ -43,7 +44,9 @@ public class Game extends ApplicationAdapter {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        Collections.sort(objects);
+        synchronized(objects) {
+            Collections.sort(objects);
+        }
         
         batch.begin();
         
@@ -54,6 +57,6 @@ public class Game extends ApplicationAdapter {
     }
     
     public static void addObject(Entity e) {
-        instance.objects.add(e);
+        game.objects.add(e);
     }
 }
