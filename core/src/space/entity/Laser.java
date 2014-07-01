@@ -4,11 +4,32 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class Laser extends Projectile {  
-    public Laser(double x, double y) {
-        super(new Texture("laser.png"),x,y,7.5,5);
-        sprite.setSize(sprite.getWidth()/3/1080f*Gdx.graphics.getWidth(),
-                sprite.getHeight()*1.1f/1920f*Gdx.graphics.getHeight());
+public class Laser extends Projectile {
+    public enum LaserType {
+        LASER_RED("laser_red.png", 7.5f, 5, 1/2f, 1.15f),
+        LASER_GREEN("laser_green.png", 7.5f, 5, 1/2f, 1.15f),
+        LASER_BLUE("laser_blue.png", 7.5f, 5, 1/2f, 1.15f),
+        LASER_PURPLE("laser_purple.png", 7.5f, 5, 1/2f, 1.15f),
+        LASER_WHITE("laser_white.png", 7.5f, 5, 1/2f, 1.15f);
+        
+        public String img;
+        public float speed;
+        public int damage;
+        public float scaleX, scaleY;
+        
+        LaserType(String i, float s, int d, float x, float y) {
+            img = i;
+            speed = s;
+            damage = d;
+            scaleX = x;
+            scaleY = y;
+        }
+    }
+    
+    public Laser(LaserType type, double x, double y) {
+        super(new Texture(type.img),x,y,type.speed, type.damage);
+        sprite.setSize(sprite.getWidth()*type.scaleX/1080f*Gdx.graphics.getWidth(),
+                sprite.getHeight()*type.scaleY/1920f*Gdx.graphics.getHeight());
         sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
         sprite.setX((float)getScreenX() - sprite.getWidth() / 2);
     }

@@ -1,6 +1,7 @@
 package space.entity;
 
 import space.Game;
+import space.entity.Laser.LaserType;
 import space.util.SpriteSheet;
 
 import com.badlogic.gdx.Gdx;
@@ -18,16 +19,17 @@ public class Ship extends Entity {
     protected boolean isHit = false;
     protected float flare;
 
+    protected LaserType type;
     private int laserTimer;
 
     private double shipWidth;
     private double shipHeight;
 
-    public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),Stats.VARIANT_1);
-    public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),Stats.VARIANT_2);
-    public static Ship SHIP_VARIANT_3 = new Ship(SpriteSheet.SHIP_VARIANT_3.getAnim(0.166f),Stats.VARIANT_3);
-    public static Ship SHIP_VARIANT_4 = new Ship(SpriteSheet.SHIP_VARIANT_4.getAnim(0.166f),Stats.VARIANT_4);
-    public static Ship SHIP_VARIANT_5 = new Ship(SpriteSheet.SHIP_VARIANT_5.getAnim(0.166f),Stats.VARIANT_5);
+    public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),Stats.VARIANT_1, LaserType.LASER_WHITE);
+    public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),Stats.VARIANT_2, LaserType.LASER_BLUE);
+    public static Ship SHIP_VARIANT_3 = new Ship(SpriteSheet.SHIP_VARIANT_3.getAnim(0.166f),Stats.VARIANT_3, LaserType.LASER_PURPLE);
+    public static Ship SHIP_VARIANT_4 = new Ship(SpriteSheet.SHIP_VARIANT_4.getAnim(0.166f),Stats.VARIANT_4, LaserType.LASER_RED);
+    public static Ship SHIP_VARIANT_5 = new Ship(SpriteSheet.SHIP_VARIANT_5.getAnim(0.166f),Stats.VARIANT_5, LaserType.LASER_GREEN);
     
     private enum Stats {
         VARIANT_1(1000, 10, 0.5, 1),
@@ -49,13 +51,16 @@ public class Ship extends Entity {
         }
     }
 
-    private Ship(Animation a, Stats s) {
+    private Ship(Animation a, Stats s, LaserType t) {
         super(a.getKeyFrame(0f).getTexture());
         z = 1;
         
         laserTimer = 0;
+        
+        
         anim = a;
         stat = s;
+        type = t;
 
         shipWidth = sprite.getWidth()*4/1080d;
         shipHeight = sprite.getHeight()*12/1920d;
@@ -73,7 +78,7 @@ public class Ship extends Entity {
 
         laserTimer += delta;
         if (laserTimer > stat.reloadTime) {
-            Game.addObject(new Laser(getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
+            Game.addObject(new Laser(type, getCenterX()/Gdx.graphics.getWidth(), getCenterY()/Gdx.graphics.getHeight()));
             laserTimer = 0;
         }
 
