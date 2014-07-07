@@ -1,6 +1,7 @@
  package space.android.network;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.UUID;
 
@@ -66,14 +67,14 @@ public class Peer {
         Thread sendThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while(running) {
-                    OutputStream out = null;
-                    try {
-                        out = clientSocket.getOutputStream();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    
+                OutputStream out = null;
+                try {
+                    out = clientSocket.getOutputStream();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
+                while(running) {                    
                     try {
                         for(Entity e : game.objects)
                             out.write(e.getBytes()); //TODO: Implement getBytes()
@@ -88,8 +89,20 @@ public class Peer {
         Thread receiveThread = new Thread(new Runnable() {
             @Override
             public void run() {
+                InputStream in = null;
+                try {
+                    in = clientSocket.getInputStream();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
+                byte[] temp = null;
                 while(running) {
-                    
+                    try {
+                        in.read(temp);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
