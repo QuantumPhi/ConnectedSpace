@@ -56,8 +56,7 @@ public class Ship extends Entity {
         z = 1;
         
         laserTimer = 0;
-        
-        
+            
         anim = a;
         stat = s;
         type = t;
