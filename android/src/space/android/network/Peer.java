@@ -1,0 +1,102 @@
+ package space.android.network;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.UUID;
+
+import space.Game;
+import space.entity.Entity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothServerSocket;
+import android.bluetooth.BluetoothSocket;
+
+public class Peer {
+    private Game game;
+    
+    private BluetoothServerSocket server;
+    private BluetoothSocket clientSocket;
+    
+    private volatile boolean running = true;
+    
+    public void start() {
+        final UUID rand = UUID.randomUUID();
+        try {
+            server = BluetoothAdapter.getDefaultAdapter().listenUsingInsecureRfcommWithServiceRecord("ConnectedSpace", rand);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        Thread handshakeThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    clientSocket = server.accept();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
+                OutputStream out = null;
+                try {
+                    out = clientSocket.getOutputStream();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
+                try {
+                    out.write(rand.hashCode());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
+                try {
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
+                try {
+                    server.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        handshakeThread.start();
+        
+        Thread sendThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(running) {
+                    OutputStream out = null;
+                    try {
+                        out = clientSocket.getOutputStream();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    
+                    try {
+                        for(Entity e : game.objects)
+                            out.write(e.getBytes()); //TODO: Implement getBytes()
+                    } catch (IOException e) {
+                        
+                    }
+                }
+            }
+        });
+        sendThread.start();
+        
+        Thread receiveThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(running) {
+                    
+                }
+            }
+        });
+        receiveThread.start();
+    }
+    
+    public void stop() {
+        running = false;
+    }
+}
