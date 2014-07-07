@@ -12,6 +12,17 @@ public abstract class Entity implements Comparable<Entity> {
         
     protected Sprite sprite;
     
+    public static enum EntityType {
+        SHIP(0),
+        PROJECTILE(1);
+        
+        public int type;
+        
+        EntityType(int t) {
+            type = t;
+        }
+    }
+    
     public Entity(Texture img) {
         sprite = img == null ? null : new Sprite(img);
     }
@@ -19,6 +30,10 @@ public abstract class Entity implements Comparable<Entity> {
     public abstract void update();
     
     public abstract void render(SpriteBatch batch);
+    
+    public byte[] getBytes() {
+        
+    }
     
     public final double getScreenX() { return x*Gdx.graphics.getWidth(); }
     public final double getScreenY() { return y*Gdx.graphics.getHeight(); }

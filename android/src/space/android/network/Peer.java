@@ -76,10 +76,10 @@ public class Peer {
                 
                 while(running) {                    
                     try {
-                        for(Entity e : game.objects)
-                            out.write(e.getBytes()); //TODO: Implement getBytes()
+                        for(Entity entity : game.objects)
+                            out.write(entity.getBytes()); //TODO: Implement getBytes()
                     } catch (IOException e) {
-                        
+                        e.printStackTrace();
                     }
                 }
             }
