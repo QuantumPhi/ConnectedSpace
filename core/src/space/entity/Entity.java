@@ -12,17 +12,6 @@ public abstract class Entity implements Comparable<Entity> {
         
     protected Sprite sprite;
     
-    public static enum EntityType {
-        SHIP(0),
-        PROJECTILE(1);
-        
-        public int type;
-        
-        EntityType(int t) {
-            type = t;
-        }
-    }
-    
     public Entity(Texture img) {
         sprite = img == null ? null : new Sprite(img);
     }
