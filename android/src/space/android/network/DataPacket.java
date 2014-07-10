@@ -63,17 +63,8 @@ public final class DataPacket {
         return getDouble(ID);
     }
     
-    public void update(EnemyShip s) {
-        s.setX(getDouble(X));
-        s.setY(getDouble(Y));
-        s.setAngle(getDouble(DIR));
-        s.setSpeed(getDouble(SPEED));
-    }
-    
-    public void update(Projectile p) {
-        p.setX(getDouble(X));
-        p.setY(getDouble(Y));
-        p.setAngle(getDouble(DIR));
-        p.setSpeed(getDouble(SPEED));
+    public void update(Entity e) {
+        e.x = getDouble(X);
+        e.y = getDouble(Y);
     }
 }

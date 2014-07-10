@@ -14,16 +14,10 @@ public final class DataPacket {
     public static final int X = 0;
     public static final int Y = 8;
         
-    public DataPacket(Projectile p) {
+    public DataPacket(Entity e) {
         data = new byte[MAX_SIZE];
-        addDouble(p.x,X);
-        addDouble(p.y,Y);
-    }
-    
-    public DataPacket(Ship s) {
-        data = new byte[MAX_SIZE];
-        addDouble(s.x,X);
-        addDouble(s.y,Y);
+        addDouble(e.x,X);
+        addDouble(e.y,Y);
     }
     
     public DataPacket(byte[] data) {

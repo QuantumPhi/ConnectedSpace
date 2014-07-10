@@ -1,19 +1,24 @@
 package space.entity;
 
+import space.util.DataPacket;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public abstract class Entity implements Comparable<Entity> {
+public abstract class Entity implements Comparable<Entity> {    
     public double x;
     public double y;
     public double z;
-        
+    
+    public DataPacket packet;
+    
     protected Sprite sprite;
     
     public Entity(Texture img) {
         sprite = img == null ? null : new Sprite(img);
+        packet = new DataPacket(this);
     }
     
     public abstract void update();

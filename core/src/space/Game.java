@@ -16,7 +16,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class Game extends ApplicationAdapter {
     private static Game game;
     
-    public long id;
+    protected long id;
     
     public SpriteBatch batch;
     public List<Entity> objects;
