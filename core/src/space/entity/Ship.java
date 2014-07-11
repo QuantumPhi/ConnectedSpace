@@ -27,7 +27,7 @@ public class Ship extends Entity {
 
     public static Ship SHIP_VARIANT_1 = new Ship(SpriteSheet.SHIP_VARIANT_1.getAnim(0.166f),Stats.VARIANT_1, LaserType.LASER_RED);
     public static Ship SHIP_VARIANT_2 = new Ship(SpriteSheet.SHIP_VARIANT_2.getAnim(0.166f),Stats.VARIANT_2, LaserType.LASER_BLUE);
-    public static Ship SHIP_VARIANT_3 = new Ship(SpriteSheet.SHIP_VARIANT_3.getAnim(0.166f),Stats.VARIANT_3, LaserType.LASER_PURPLE);
+    public static Ship SHIP_VARIANT_3 = new Ship(SpriteSheet.SHIP_VARIANT_3.getAnim(0.166f),Stats.VARIANT_3, LaserType.LASER_RED);
     public static Ship SHIP_VARIANT_4 = new Ship(SpriteSheet.SHIP_VARIANT_4.getAnim(0.166f),Stats.VARIANT_4, LaserType.LASER_RED);
     public static Ship SHIP_VARIANT_5 = new Ship(SpriteSheet.SHIP_VARIANT_5.getAnim(0.166f),Stats.VARIANT_5, LaserType.LASER_GREEN);
     
