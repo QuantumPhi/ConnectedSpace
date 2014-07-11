@@ -77,7 +77,7 @@ public class Peer {
                 while(running) {                    
                     try {
                         for(Entity entity : game.objects)
-                            out.write(entity.getBytes()); //TODO: Implement getBytes()
+                            out.write(entity.getBytes());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

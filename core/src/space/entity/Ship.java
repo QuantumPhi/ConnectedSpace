@@ -32,21 +32,19 @@ public class Ship extends Entity {
     public static Ship SHIP_VARIANT_5 = new Ship(SpriteSheet.SHIP_VARIANT_5.getAnim(0.166f),Stats.VARIANT_5, LaserType.LASER_GREEN);
     
     private enum Stats {
-        VARIANT_1(1000, 10, 0.5, 1),
-        VARIANT_2(1000, 10, 0.5, 1),
-        VARIANT_3(1000, 10, 0.5, 1),
-        VARIANT_4(1000, 10, 0.5, 1),
-        VARIANT_5(1000, 10, 0.5, 1);
+        VARIANT_1(1000, 10, 1),
+        VARIANT_2(1000, 10, 1),
+        VARIANT_3(1000, 10, 1),
+        VARIANT_4(1000, 10, 1),
+        VARIANT_5(1000, 10, 1);
         
         public int reloadTime;
         public int shields;
-        public double regen;
         public double speed;
         
-        Stats(int rt, int sh, double r, double s){
+        Stats(int rt, int sh, double s){
             reloadTime = rt;
             shields = sh;
-            regen = r;
             speed = s;  
         }
     }
