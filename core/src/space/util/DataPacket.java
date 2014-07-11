@@ -2,6 +2,7 @@ package space.util;
 
 import java.nio.ByteBuffer;
 
+import space.entity.Entity;
 import space.entity.Projectile;
 import space.entity.Ship;
 
