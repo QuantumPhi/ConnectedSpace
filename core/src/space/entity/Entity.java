@@ -12,13 +12,10 @@ public abstract class Entity implements Comparable<Entity> {
     public double y;
     public double z;
     
-    public DataPacket packet;
-    
     protected Sprite sprite;
     
     public Entity(Texture img) {
         sprite = img == null ? null : new Sprite(img);
-        packet = new DataPacket(this);
     }
     
     public abstract void update();
@@ -26,7 +23,7 @@ public abstract class Entity implements Comparable<Entity> {
     public abstract void render(SpriteBatch batch);
     
     public byte[] getBytes() {
-        
+        return DataPacket.getBytes(this);
     }
     
     public final double getScreenX() { return x*Gdx.graphics.getWidth(); }

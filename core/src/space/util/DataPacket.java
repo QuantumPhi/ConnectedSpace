@@ -3,8 +3,6 @@ package space.util;
 import java.nio.ByteBuffer;
 
 import space.entity.Entity;
-import space.entity.Projectile;
-import space.entity.Ship;
 
 public final class DataPacket {
     
@@ -15,10 +13,14 @@ public final class DataPacket {
     public static final int X = 0;
     public static final int Y = 8;
         
-    public DataPacket(Entity e) {
+    private DataPacket(Entity e) {
         data = new byte[MAX_SIZE];
         addDouble(e.x,X);
         addDouble(e.y,Y);
+    }
+    
+    public static byte[] getBytes(Entity e) {
+        return (new DataPacket(e)).bytes();
     }
     
     public DataPacket(byte[] data) {
@@ -53,17 +55,12 @@ public final class DataPacket {
         ByteBuffer.wrap(arr,pos,8).putDouble(d);
     }
     
-    public byte[] getBytes() {
+    public byte[] bytes() {
         return data;
     }
     
-    public void update(Ship s) {
-        s.x = getDouble(X);
-        s.y = getDouble(Y);
-    }
-    
-    public void update(Projectile p) {
-        p.x = getDouble(X);
-        p.y = getDouble(Y);
+    public void update(Entity e) {
+        e.x = getDouble(X);
+        e.y = getDouble(Y);
     }
 }
