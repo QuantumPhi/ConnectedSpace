@@ -6,11 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Laser extends Projectile {
     public enum LaserType {
-        LASER_RED("laser_red.png", 7.5f, 5, 1/2f, 1.15f),
-        LASER_GREEN("laser_green.png", 7.5f, 5, 1/2f, 1.15f),
-        LASER_BLUE("laser_blue.png", 7.5f, 5, 1/2f, 1.15f),
-        LASER_PURPLE("laser_purple.png", 7.5f, 5, 1/2f, 1.15f),
-        LASER_WHITE("laser_white.png", 7.5f, 5, 1/2f, 1.15f);
+        LASER_RED("laser_red.png", 7.5f, 5, 1/1.75f, 1.1f),
+        LASER_GREEN("laser_green.png", 7.5f, 5, 1/1.75f, 1.1f),
+        LASER_BLUE("laser_blue.png", 7.5f, 5, 1/1.75f, 1.1f);
         
         public String img;
         public float speed;
