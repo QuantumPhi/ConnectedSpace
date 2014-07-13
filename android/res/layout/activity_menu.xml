@@ -18,7 +18,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="54dp"
             android:ems="10"
-            android:text="@string/hello_world"
+            android:text=""
             android:textAlignment="center" >
 
             <requestFocus />
