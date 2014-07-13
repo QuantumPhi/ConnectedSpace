@@ -1,11 +1,7 @@
 <resources>
 
     <style name="GdxTheme" parent="android:Theme">
-<<<<<<< HEAD
 		<item name="android:windowBackground">@android:color/transparent</item>
-=======
-        <item name="android:windowBackground">@android:color/transparent</item>
->>>>>>> a736ea8a0a9eeef0839892ac2d12e969e5d66b4a
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
         <item name="android:windowNoTitle">true</item>
