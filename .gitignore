@@ -1,3 +1,7 @@
+/gdx-setup.jar
+/ConnectedSpace.zip
+
+>>>>>>> a736ea8a0a9eeef0839892ac2d12e969e5d66b4a
 ## Java
 
 *.class
@@ -58,6 +62,7 @@ nb-configuration.xml
 
 .gradle
 build/
+<<<<<<< HEAD
 
 ## OS Specific
 .DS_Store

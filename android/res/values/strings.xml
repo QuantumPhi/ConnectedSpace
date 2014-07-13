@@ -2,5 +2,11 @@
 <resources>
 
     <string name="app_name">ConnectedSpace</string>
+<<<<<<< HEAD
+=======
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+>>>>>>> a736ea8a0a9eeef0839892ac2d12e969e5d66b4a
 
 </resources>

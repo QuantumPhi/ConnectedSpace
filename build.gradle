@@ -33,11 +33,11 @@ project(":android") {
 
     configurations { natives }
 	
-	repositories {
-		flatDir {
-			dirs "libs"
-		}
-	}
+    repositories {
+        flatDir {
+            dirs "libs"
+        }
+    }
 
     dependencies {
         compile project(":core")
@@ -52,7 +52,7 @@ project(":android") {
         compile "com.badlogicgames.gdx:gdx-controllers:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-controllers-android:$gdxVersion"
 
-		compile "com.android.support:support-v4:+"
+        compile "com.android.support:support-v4:+"
         compile "com.android.support:appcompat-v7:+"
     }
 }
