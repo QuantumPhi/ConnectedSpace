@@ -54,6 +54,8 @@ project(":android") {
 
         compile "com.android.support:support-v4:+"
         compile "com.android.support:appcompat-v7:+"
+
+        compile "org.alljoyn.bus:alljoyn:"
     }
 }
 
