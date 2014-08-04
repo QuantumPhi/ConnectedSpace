@@ -3,12 +3,15 @@ package space.android.network;
 import java.util.Stack;
 
 import space.Game;
-import space.android.MenuActivity;
 import space.entity.Entity;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
 
 public class Peer {
@@ -32,21 +35,17 @@ public class Peer {
         Thread handshakeThread = new Thread(new Runnable() {
            @Override
            public void run() {
-                try {
-                    socket = server.accept();
-                } catch (IOException e) {
-                    Log.e("ConnectedSpace", "Error while binding socket", e)
-                }
-                
-                try {
-                    server.close();
-                } catch(IOException e) {
-                    Log.e("ConnectedSpace", "Error while closing server socket", e);
-                }
-                
-                try {
-                    socket.connect();
-                }
+               final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+                   public void onReceive(Context context, Intent intent) {
+                       String action = intent.getAction();
+                       if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                           BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                           mArrayAdapter.add(device.getName() + "\n" + device.getAddress());
+                       }
+                   }
+               };
+               IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+               registerReceiver(mReceiver, filter);
             }
         });
     }
