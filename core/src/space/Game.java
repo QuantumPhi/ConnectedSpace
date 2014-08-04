@@ -18,18 +18,17 @@ public class Game extends ApplicationAdapter {
     
     protected long id;
     
-    public SpriteBatch batch;
-    public List<Entity> objects;
+    public SpriteBatch batch = new SpriteBatch();
+    public List<Entity> objects = new ArrayList<>();
+    public List<Entity> queue = new ArrayList<>();
     
     @Override
     public void create() {
         game = this;
-        batch = new SpriteBatch();
-        objects = new ArrayList<>();
         Entity player = Ship.SHIP_VARIANT_1;
-        objects.add(player);
+        addObject(player);
         for(int i = 0; i < 20; i++)
-            objects.add(new Star());
+            addObject(new Star());
     }
     
     public void update() {
