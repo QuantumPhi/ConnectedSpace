@@ -11,6 +11,6 @@ public class DataPacket {
     public final byte[] data = new byte[MAX_SIZE];
     
     public DataPacket(Entity e) {
-        DataPacket.init(e);
+        //DataPacket.init(e);
     }
 }
