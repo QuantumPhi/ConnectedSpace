@@ -1,12 +1,10 @@
 package space.android;
 
-import space.android.network.Peer;
+import java.util.Set;
+
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -29,28 +27,6 @@ public class MenuActivity extends ActionBarActivity {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container,new PlaceholderFragment()).commit();
         }
-        
-        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        if(adapter == null)
-            Log.w("ConnectedSpace", "Onboard hardware does not support Bluetooth");
-        
-        if (!adapter.isEnabled()) {
-            Intent discoverableIntent = new
-                    Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
-            startActivity(discoverableIntent);
-        }
-        
-        final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-            public void onReceive(Context context, Intent intent) {
-                String action = intent.getAction();
-                if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                    BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                }
-            }
-        };
-        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        registerReceiver(mReceiver, filter);
     }
     
     @Override
@@ -71,6 +47,31 @@ public class MenuActivity extends ActionBarActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REQUEST_ENABLE_BT) {
+            if(resultCode == RESULT_OK);
+                //Bluetooth enabled, proceed to start Peer
+            else;
+                //Bluetooth not enabled, show error
+        }
+    }
+    
+    public void peerStart() {
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        if(adapter == null)
+            Log.w("ConnectedSpace", "Onboard hardware does not support Bluetooth");
+        
+        if (!adapter.isEnabled()) {
+            Intent discoverableIntent = new
+                    Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+            discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+            startActivityWithResult(discoverableIntent, REQUEST_ENABLE_BT);
+        }
+            
+        Set<BluetoothDevice> pairedDevices = adapter.getBondedDevices();
     }
     
     /**
