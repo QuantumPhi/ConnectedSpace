@@ -33,24 +33,26 @@ public class Peer {
     }
     
     public void handshake() {
-        Thread handshakeThread = new Thread(() -> {
-            BluetoothSocket temp = null;
-            try {
-                server = BluetoothAdapter.getDefaultAdapter().listenUsingRfcommWithServiceRecord("ConnectedSpace", new UUID(10, 10));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            
-            try {
-                socket = server.accept();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            
-            try {
-                server.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+        Thread handshakeThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    server = BluetoothAdapter.getDefaultAdapter().listenUsingRfcommWithServiceRecord("ConnectedSpace", new UUID(10, 10));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
+                try {
+                    socket = server.accept();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
+                try {
+                    server.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         handshakeThread.start();
@@ -60,18 +62,23 @@ public class Peer {
         if(running)
             return;
         running = true;
-        Thread sendThread = new Thread(() -> {
-            while(running) {
-                queue.addAll(game.queue);
-                ((Vector<Entity>) game.queue).removeAllElements();
-                
+        Thread sendThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(running) {
+                    queue.addAll(game.queue);
+                    ((Vector<Entity>) game.queue).removeAllElements();
+                }
             }
         });
         sendThread.start();
         
-        Thread recvThread = new Thread(() -> {
-            while(running) {
-                
+        Thread recvThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(running) {
+                    
+                }
             }
         });
         recvThread.start();
