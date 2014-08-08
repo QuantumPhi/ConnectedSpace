@@ -61,9 +61,6 @@ public class Ship extends Entity {
 
         shipWidth = sprite.getWidth()*4/1080d;
         shipHeight = sprite.getHeight()*12/1920d;
-
-        sprite.setSize((float)shipWidth*Gdx.graphics.getWidth(),(float)shipHeight*Gdx.graphics.getHeight());
-        sprite.setOrigin(sprite.getWidth()/2-1, sprite.getHeight()/2);
     }
 
     @Override

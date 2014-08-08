@@ -14,13 +14,17 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Game extends ApplicationAdapter {
+    public static class Info {
+        public static int WINDOW_WIDTH = Gdx.graphics.getWidth();
+        public static int WINDOW_HEIGHT = Gdx.graphics.getHeight();
+    }
+    
     private static Game game;
     
     protected long id;
     
     public SpriteBatch batch = new SpriteBatch();
     public List<Entity> objects = new ArrayList<>();
-    public List<Entity> queue = new ArrayList<>();
     
     @Override
     public void create() {

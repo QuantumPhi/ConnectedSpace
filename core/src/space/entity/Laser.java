@@ -26,9 +26,7 @@ public class Laser extends Projectile {
     
     public Laser(LaserType type, double x, double y) {
         super(new Texture(type.img),x,y,type.speed, type.damage);
-        sprite.setSize(sprite.getWidth()*type.scaleX/1080f*Gdx.graphics.getWidth(),
-                sprite.getHeight()*type.scaleY/1920f*Gdx.graphics.getHeight());
-        sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
+        sprite.setSize(sprite.getWidth()*type.scaleX, sprite.getHeight()*type.scaleY);
         sprite.setX((float)getScreenX() - sprite.getWidth() / 2);
     }
 

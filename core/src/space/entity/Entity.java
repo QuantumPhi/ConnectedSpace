@@ -1,5 +1,6 @@
 package space.entity;
 
+import space.Game;
 import space.util.DataPacket;
 
 import com.badlogic.gdx.Gdx;
@@ -16,6 +17,9 @@ public abstract class Entity implements Comparable<Entity> {
     
     public Entity(Texture img) {
         sprite = img == null ? null : new Sprite(img);
+        sprite.setSize(sprite.getWidth()/1080f*Game.Info.WINDOW_WIDTH,
+                sprite.getHeight()/1920f*Game.Info.WINDOW_HEIGHT);
+        sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
     }
     
     public abstract void update();
