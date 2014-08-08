@@ -45,7 +45,9 @@ public class TransferThread extends Thread {
                 bytes = in.read(buffer);
             } catch (IOException e) {
                 Log.e("ConnectedSpace", "Error while reading from input stream");
+                break;
             }
+            
             if(bytes != DataPacket.MAX_SIZE)
                 Log.e("ConnectedSpace", "Corrupt or falsified data received");
         }

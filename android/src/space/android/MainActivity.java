@@ -1,6 +1,7 @@
 package space.android;
 
 import java.util.Set;
+import java.util.UUID;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -12,6 +13,7 @@ import android.util.Log;
 public class MainActivity extends Activity {
     public static int REQUEST_ENABLE_BT = 1,
                       REQUEST_DISCOVERABLE_BT = 2;
+    public static UUID APP_UUID = UUID.fromString("3787E831-57B7-4A33-B249-1ED821612181");
         
     protected Thread discoverThread;
     protected Thread sendThread;
@@ -64,5 +66,9 @@ public class MainActivity extends Activity {
             btDiscover.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, seconds);
             startActivityForResult(btDiscover, REQUEST_DISCOVERABLE_BT);
         }
+    }
+    
+    protected void searchAndConnect() {
+        
     }
 }
