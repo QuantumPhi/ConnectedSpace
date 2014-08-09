@@ -8,7 +8,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 
-public class ConnectThread {
+public class ConnectThread extends Thread {
     private final BluetoothDevice device;
     private final BluetoothSocket socket;
     
@@ -37,6 +37,7 @@ public class ConnectThread {
             } catch(IOException ex) {
                 Log.e("ConnectedSpace", "Error while closing socket");
             }
+            cancel();
             return;
         }
         
@@ -44,14 +45,16 @@ public class ConnectThread {
     }
     
     public void manageConnectedSocket(BluetoothSocket socket) {
-        (new TransferThread(socket)).start();
+        (new Thread(new TransferThread(socket))).start();
     }
     
     public void cancel() {
-        try {
-            socket.close();
-        } catch(IOException e) {
-            Log.e("ConnectedSpace", "Error while closing socket");
+        synchronized(socket) {
+            try {
+                socket.close();
+            } catch(IOException e) {
+                Log.e("ConnectedSpace", "Error while closing socket");
+            }
         }
     }
 }
