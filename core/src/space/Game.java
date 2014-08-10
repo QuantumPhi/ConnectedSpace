@@ -23,12 +23,14 @@ public class Game extends ApplicationAdapter {
     
     protected long id;
     
-    public SpriteBatch batch = new SpriteBatch();
-    public List<Entity> objects = new ArrayList<>();
+    public SpriteBatch batch;
+    public List<Entity> objects;
     
     @Override
     public void create() {
         game = this;
+        batch = new SpriteBatch();
+        objects = new ArrayList<>();
         Entity player = Ship.SHIP_VARIANT_1;
         addObject(player);
         for(int i = 0; i < 20; i++)
