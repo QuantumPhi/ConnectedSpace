@@ -51,6 +51,10 @@ public class Ship extends Entity {
 
     private Ship(Animation a, Stats s, LaserType t) {
         super(a.getKeyFrame(0f).getTexture());
+        sprite.setSize((float)(sprite.getWidth() * 4), 
+                (float)(sprite.getHeight() * 12));
+        sprite.setOrigin(sprite.getWidth() / 2f, sprite.getHeight() / 2f);
+        
         z = 1;
         
         laserTimer = 0;
@@ -58,9 +62,6 @@ public class Ship extends Entity {
         anim = a;
         stat = s;
         type = t;
-
-        shipWidth = sprite.getWidth()*4/1080d;
-        shipHeight = sprite.getHeight()*12/1920d;
     }
 
     @Override
