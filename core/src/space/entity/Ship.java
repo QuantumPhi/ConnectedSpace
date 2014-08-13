@@ -62,6 +62,8 @@ public class Ship extends Entity {
         anim = a;
         stat = s;
         type = t;
+        
+        x = 0.5;
     }
 
     @Override
