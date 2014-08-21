@@ -55,6 +55,9 @@ public class Ship extends Entity {
                 (float)(sprite.getHeight() * 12));
         sprite.setOrigin(sprite.getWidth() / 2f, sprite.getHeight() / 2f);
         
+        shipWidth = sprite.getWidth() / Game.Info.WINDOW_WIDTH;
+        shipHeight = sprite.getHeight() / Game.Info.WINDOW_HEIGHT;
+        
         z = 1;
         
         laserTimer = 0;
@@ -63,7 +66,7 @@ public class Ship extends Entity {
         stat = s;
         type = t;
         
-        x = 0.5;
+        x = 0.5 - sprite.getOriginX() / Game.Info.WINDOW_WIDTH;
     }
 
     @Override
