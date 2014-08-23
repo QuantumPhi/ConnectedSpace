@@ -30,7 +30,7 @@ public class Game extends ApplicationAdapter {
     public void create() {
         game = this;
         batch = new SpriteBatch();
-        objects = new ArrayList<>();
+        objects = new ArrayList<Entity>();
         Entity player = Ship.SHIP_VARIANT_1;
         addObject(player);
         for(int i = 0; i < 20; i++)
