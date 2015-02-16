@@ -1,15 +1,1 @@
-ConnectedSpace
-==============
-
-A space shooter where players can shoot one another's spaceships from across their phones.
-
-Contributors:
-
-| Contributor | Job |
-|-------------|-----|
-| Tarik | Programming |
-| Shreyas | Programming |
-
-Licensed under the [GNU GPL v3 License](LICENSE).
-
-[Setup Instructions](SETUP.md)
+## Deprecated. See [anubiann00b/ConnectedSpace](https://github.com/anubiann00b/ConnectedSpace)
